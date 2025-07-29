@@ -1,11 +1,97 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import Social from "../components/Social.astro";
+import Separador from "../components/Separador.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<Welcome />
+	<body>
+		<header>
+			<section>
+				<h1>Ignacio Ahmed Hassan</h1>
+				<p style="font-weight: 700; font-size: 1.5rem; margin-top:0">
+					Desarrollador
+				</p>
+				<p class="contacto">
+					📍 La Plata, Buenos Aires, Argentina<br />
+					✉️ <a
+						href="mailto:ignacioahmedhassan@gmail.com"
+						style="color: #90ee90;">ignacioahmedhassan@gmail.com</a
+					>
+				</p>
+				<p>
+					Soy estudiante de informática y me gusta crear software que
+					respete a quienes lo usan. Prioritizo la simplicidad, la
+					accesibilidad y la libertad en cada herramienta. Creo que la
+					tecnología debería estar al servicio de las personas y no al
+					revés, por eso me interesa aprender y colaborar en proyectos
+					libres, transparentes y con impacto social real.
+				</p>
+				<Social />
+			</section>
+		</header>
+
+		<section>
+			<h2>Experiencia Laboral</h2>
+			<div class="trabajo">
+				<p class="titulo-trabajo">
+					Data Curator – Veeva Systems (feb. 2025 – Presente)
+				</p>
+				<ul>
+					<li>
+						Gestión y validación de conjuntos de datos para clientes
+						de las industrias farmacéutica y de ciencias de la vida
+					</li>
+					<li>
+						Asegurar la integridad, consistencia y cumplimiento de
+						los estándares del sector
+					</li>
+				</ul>
+			</div>
+			<div class="trabajo">
+				<p class="titulo-trabajo">
+					Especialista en Soluciones Técnicas – Multimedio Trinchera
+					(2023 – ene. 2025)
+				</p>
+				<ul>
+					<li>
+						Diseño e implementación de un sistema de sorteos con
+						interfaces para proveedor y sorteador
+					</li>
+					<li>Soporte técnico</li>
+					<li>Reparación y mantenimiento de equipos</li>
+				</ul>
+			</div>
+		</section>
+		<Separador/>
+		<section>
+			<h2>Educación</h2>
+			<p>
+				<strong>Licenciatura en Informática</strong><br />Universidad
+				Nacional de La Plata, 2024 – Presente
+			</p>
+		</section>
+		<Separador/>
+
+		<section>
+			<h2>Certificaciones</h2>
+			<ul>
+				<li>
+					Certificación de inglés nivel B2 – Instituto TS Eliot (2016)
+				</li>
+			</ul>
+		</section>
+		<Separador/>
+
+		<section>
+			<h2>Conocimientos Técnicos</h2>
+			<ul>
+				<li>Suite de Office</li>
+				<li>Linux</li>
+				<li>HTML, CSS, JavaScript</li>
+				<li>Java, C#, .NET</li>
+			</ul>
+		</section>
+	</body>
 </Layout>
