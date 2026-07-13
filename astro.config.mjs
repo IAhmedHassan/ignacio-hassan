@@ -1,9 +1,7 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
+import netlify from '@astrojs/netlify';
 
-// https://astro.build/config
 export default defineConfig({
-    site: 'https://IAhmedHassan.github.io',
-    base: '/',
-    output: 'server',
+  output: 'server',
+  adapter: netlify(),
 });
