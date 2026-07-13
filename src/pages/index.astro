@@ -1,6 +1,8 @@
 ---
 import { detectLanguage } from "../lib/i18n";
 
+
+
 // Get the Accept-Language header from the request
 const acceptLanguage = Astro.request.headers.get("accept-language") || "";
 const detectedLanguage = detectLanguage(acceptLanguage);
