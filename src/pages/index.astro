@@ -1,12 +1,216 @@
 ---
-import { detectLanguage } from "../lib/i18n";
+import Layout from "../layouts/Layout.astro"
+import Social from "../components/Social.astro";
+import Separador from "../components/Separador.astro";
+import { getTranslation } from "../lib/i18n";
 
-
-
-// Get the Accept-Language header from the request
-const acceptLanguage = Astro.request.headers.get("accept-language") || "";
-const detectedLanguage = detectLanguage(acceptLanguage);
-
-// Redirect to the appropriate language version
-return Astro.redirect(`/${detectedLanguage}/`);
+const tEs = (key: string) => getTranslation("es", key);
+const tEn = (key: string) => getTranslation("en", key);
+const baseUrl = import.meta.env.BASE_URL || "/";
 ---
+
+<Layout>
+  <body>
+    <div class="language-switcher" role="tablist" aria-label="Selector de idioma">
+      <button class="lang-btn active" data-lang="es" type="button">ES</button>
+      <button class="lang-btn" data-lang="en" type="button">EN</button>
+    </div>
+
+    <div class="lang-panel active" data-lang-panel="es">
+      <header>
+        <section>
+          <h1>{tEs("name")}</h1>
+          <p style="font-weight: 700; font-size: 1.5rem; margin-top:0">{tEs("title")}</p>
+          <p class="contacto">
+            {tEs("location")}<br />
+            {tEs("email")}
+            <a href="mailto:ignacioahmedhassan@gmail.com" style="color: #90ee90;">{tEs("emailAddress")}</a>
+          </p>
+          <p>{tEs("bio")}</p>
+          <Social />
+          <a href={`${baseUrl}docs/CV.pdf`}>{tEs("downloadCV")}</a>
+        </section>
+      </header>
+
+      <section>
+        <h2>{tEs("workExperience")}</h2>
+        <div class="trabajo">
+          <p class="titulo-trabajo">{tEs("job1Title")}</p>
+          <ul>
+            <li>{tEs("job1_1")}</li>
+            <li>{tEs("job1_2")}</li>
+            <li>{tEs("job1_3")}</li>
+            <li>{tEs("job1_4")}</li>
+            <li>{tEs("job1_5")}</li>
+            <li>{tEs("job1_6")}</li>
+          </ul>
+        </div>
+        <div class="trabajo">
+          <p class="titulo-trabajo">{tEs("job2Title")}</p>
+          <ul>
+            <li>{tEs("job2_1")}</li>
+            <li>{tEs("job2_2")}</li>
+          </ul>
+        </div>
+        <div class="trabajo">
+          <p class="titulo-trabajo">{tEs("job3Title")}</p>
+          <ul>
+            <li>{tEs("job3_1")}</li>
+            <li>{tEs("job3_2")}</li>
+            <li>{tEs("job3_3")}</li>
+          </ul>
+        </div>
+      </section>
+
+      <Separador />
+
+      <section>
+        <h2>{tEs("education")}</h2>
+        <p>
+          <strong>{tEs("degree1")}</strong><br />{tEs("degree1Uni")}
+        </p>
+        <ul>
+          <li>{tEs("degree1Progress")}</li>
+        </ul>
+        <p>
+          <strong>{tEs("degree2")}</strong><br />{tEs("degree2Uni")}
+        </p>
+        <ul>
+          <li>{tEs("degree2Progress")}</li>
+        </ul>
+      </section>
+
+      <Separador />
+
+      <section>
+        <h2>{tEs("technicalSkills")}</h2>
+        <ul>
+          <li>{tEs("skill1")}</li>
+          <li>{tEs("skill2")}</li>
+          <li>{tEs("skill3")}</li>
+          <li>{tEs("skill4")}</li>
+          <li>{tEs("skill5")}</li>
+        </ul>
+      </section>
+
+      <Separador />
+
+      <section>
+        <h2>{tEs("certifications")}</h2>
+        <ul>
+          <li>{tEs("cert1")}</li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="lang-panel" data-lang-panel="en">
+      <header>
+        <section>
+          <h1>{tEn("name")}</h1>
+          <p style="font-weight: 700; font-size: 1.5rem; margin-top:0">{tEn("title")}</p>
+          <p class="contacto">
+            {tEn("location")}<br />
+            {tEn("email")}
+            <a href="mailto:ignacioahmedhassan@gmail.com" style="color: #90ee90;">{tEn("emailAddress")}</a>
+          </p>
+          <p>{tEn("bio")}</p>
+          <Social />
+          <a href={`${baseUrl}docs/CV.pdf`}>{tEn("downloadCV")}</a>
+        </section>
+      </header>
+
+      <section>
+        <h2>{tEn("workExperience")}</h2>
+        <div class="trabajo">
+          <p class="titulo-trabajo">{tEn("job1Title")}</p>
+          <ul>
+            <li>{tEn("job1_1")}</li>
+            <li>{tEn("job1_2")}</li>
+            <li>{tEn("job1_3")}</li>
+            <li>{tEn("job1_4")}</li>
+            <li>{tEn("job1_5")}</li>
+            <li>{tEn("job1_6")}</li>
+          </ul>
+        </div>
+        <div class="trabajo">
+          <p class="titulo-trabajo">{tEn("job2Title")}</p>
+          <ul>
+            <li>{tEn("job2_1")}</li>
+            <li>{tEn("job2_2")}</li>
+          </ul>
+        </div>
+        <div class="trabajo">
+          <p class="titulo-trabajo">{tEn("job3Title")}</p>
+          <ul>
+            <li>{tEn("job3_1")}</li>
+            <li>{tEn("job3_2")}</li>
+            <li>{tEn("job3_3")}</li>
+          </ul>
+        </div>
+      </section>
+
+      <Separador />
+
+      <section>
+        <h2>{tEn("education")}</h2>
+        <p>
+          <strong>{tEn("degree1")}</strong><br />{tEn("degree1Uni")}
+        </p>
+        <ul>
+          <li>{tEn("degree1Progress")}</li>
+        </ul>
+        <p>
+          <strong>{tEn("degree2")}</strong><br />{tEn("degree2Uni")}
+        </p>
+        <ul>
+          <li>{tEn("degree2Progress")}</li>
+        </ul>
+      </section>
+
+      <Separador />
+
+      <section>
+        <h2>{tEn("technicalSkills")}</h2>
+        <ul>
+          <li>{tEn("skill1")}</li>
+          <li>{tEn("skill2")}</li>
+          <li>{tEn("skill3")}</li>
+          <li>{tEn("skill4")}</li>
+          <li>{tEn("skill5")}</li>
+        </ul>
+      </section>
+
+      <Separador />
+
+      <section>
+        <h2>{tEn("certifications")}</h2>
+        <ul>
+          <li>{tEn("cert1")}</li>
+        </ul>
+      </section>
+    </div>
+
+    <script>
+      const preferredLanguage = (navigator.languages?.[0] || navigator.language || "en").toLowerCase();
+      const detectedLanguage = preferredLanguage.startsWith("es") ? "es" : "en";
+      const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>(".lang-btn"));
+      const panels = Array.from(document.querySelectorAll<HTMLElement>(".lang-panel"));
+
+      const setLanguage = (lang: string) => {
+        buttons.forEach((button) => {
+          button.classList.toggle("active", button.dataset.lang === lang);
+        });
+
+        panels.forEach((panel) => {
+          panel.classList.toggle("active", panel.dataset.langPanel === lang);
+        });
+      };
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => setLanguage(button.dataset.lang || "en"));
+      });
+
+      setLanguage(detectedLanguage);
+    </script>
+  </body>
+</Layout>
