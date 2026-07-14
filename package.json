@@ -6,8 +6,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "deploy": "cp -r dist/* docs/"
+    "astro": "astro"
   },
   "dependencies": {
     "astro": "^5.12.4"
