@@ -14,7 +14,7 @@
   --color-border: #e2e8f0;        /* Slate 200 - Bordes sutiles y precisos */
   --color-border-strong: #94a3b8; /* Slate 400 - Bordes de énfasis */
   --font-family: "Chivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --max-width: 860px;
+  --max-width: 960px;
 }
 
 *, *::before, *::after {
@@ -256,6 +256,12 @@ body {
   padding: 2.5rem;
 }
 
+.cv-side {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
 .cv-section {
   margin-bottom: 2.5rem;
 }
@@ -295,20 +301,46 @@ body {
   margin: 0;
 }
 
-/* Competencias (Skills Tags) */
-.skills-grid {
+/* Competencias (destacadas + secundarias) */
+.skills-highlight {
   display: flex;
   flex-wrap: wrap;
   gap: 0.6rem;
+}
+
+.skill-pill {
+  display: inline-block;
+  background-color: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  color: #1e293b;
+  font-size: 0.82rem;
+  font-weight: 500;
+  line-height: 1.35;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+}
+
+.skill-pill--key {
+  background-color: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: var(--color-primary-light);
+  font-weight: 600;
+}
+
+.skills-secondary {
+  margin: 1rem 0 0;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: var(--color-text-muted);
 }
 
 .skill-tag {
   background-color: #f1f5f9;
   border: 1px solid #cbd5e1;
   color: #1e293b;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 500;
-  padding: 0.35rem 0.75rem;
+  padding: 0.3rem 0.62rem;
   border-radius: 3px;
   transition: border-color 0.2s ease, background-color 0.2s ease;
 }
@@ -316,6 +348,112 @@ body {
 .skill-tag:hover {
   background-color: #e2e8f0;
   border-color: #94a3b8;
+}
+
+/* ==========================================================================
+   PROYECTOS ACADÉMICOS
+   ========================================================================== */
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.4rem;
+}
+
+.project-card {
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-primary-light);
+  border-radius: 4px;
+  background-color: #f8fafc;
+  padding: 1.3rem 1.4rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+  border-color: var(--color-border-strong);
+  box-shadow: 0 3px 12px -4px rgba(15, 23, 42, 0.15);
+}
+
+.project-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.project-name {
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.project-period {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  background-color: #ffffff;
+  border: 1px solid var(--color-border);
+  padding: 0.1rem 0.5rem;
+  border-radius: 3px;
+}
+
+.project-context {
+  font-size: 0.84rem;
+  color: var(--color-text-muted);
+  margin-top: 0.25rem;
+}
+
+.project-role {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #1e3a8a;
+  background-color: #dbeafe;
+  border: 1px solid #bfdbfe;
+  padding: 0.12rem 0.55rem;
+  border-radius: 3px;
+  margin-top: 0.5rem;
+}
+
+.project-desc {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--color-text-main);
+  margin: 0.7rem 0;
+}
+
+.project-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.project-stack .skill-tag {
+  font-size: 0.76rem;
+  padding: 0.2rem 0.55rem;
+  background-color: #ffffff;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.9rem;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.project-link:hover {
+  color: var(--color-primary-light);
+  text-decoration: underline;
+}
+
+.project-link svg {
+  flex-shrink: 0;
 }
 
 /* Experiencia Laboral */
@@ -506,5 +644,65 @@ html[data-active-lang="en"] .lang-panel[data-lang-panel="en"] {
   .item-header {
     flex-direction: column;
     align-items: flex-start;
+  }
+}
+
+/* ==========================================================================
+   DESKTOP / MONITORES GRANDES (>= 1024px)
+   Layout tipo expediente en dos columnas: contenido principal + lateral
+   ========================================================================== */
+@media (min-width: 1024px) {
+  :root {
+    --max-width: 1180px;
+  }
+
+  .document-container {
+    margin: 2.5rem auto;
+  }
+
+  .cv-header {
+    padding: 3.25rem 3.25rem 2.75rem;
+  }
+
+  /* El panel de idioma activo pasa a grilla tipo expediente */
+  html[data-active-lang="es"] .lang-panel[data-lang-panel="es"],
+  html:not([data-active-lang="en"]) .lang-panel[data-lang-panel="es"],
+  html[data-active-lang="en"] .lang-panel[data-lang-panel="en"] {
+    display: grid;
+    grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+    grid-template-areas:
+      "experience side"
+      "projects   projects"
+      "skills     skills";
+    align-items: start;
+    column-gap: 0;
+    row-gap: 2.75rem;
+    padding: 3rem 3.25rem;
+  }
+
+  .cv-section--experience {
+    grid-area: experience;
+    padding-right: 2.75rem;
+    margin-bottom: 0;
+  }
+
+  .cv-section--projects {
+    grid-area: projects;
+    margin-bottom: 0;
+  }
+
+  .cv-section--skills {
+    grid-area: skills;
+    margin-bottom: 0;
+  }
+
+  .cv-side {
+    grid-area: side;
+    border-left: 1px solid var(--color-border);
+    padding-left: 2.75rem;
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
