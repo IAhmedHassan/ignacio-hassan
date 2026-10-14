@@ -1,0 +1,263 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Social from "../../components/Social.astro";
+import cvData from "../../data/cvData.json";
+
+export function getStaticPaths() {
+  const roles = cvData.roles;
+  return Object.keys(roles).map((roleSlug) => ({
+    params: { role: roleSlug },
+    props: {
+      currentRoleKey: roleSlug as keyof typeof roles,
+    },
+  }));
+}
+
+const { currentRoleKey } = Astro.props;
+const roles = cvData.roles;
+const currentRole = roles[currentRoleKey];
+const common = cvData.common;
+
+// Normalizar baseUrl para enlaces
+const rawBase = import.meta.env.BASE_URL || "/";
+const baseUrl = rawBase.endsWith("/") ? rawBase : `${rawBase}/`;
+
+const pageTitle = `${common.es.name} | ${currentRole.es.title}`;
+---
+
+<Layout title={pageTitle} lang="es">
+  <!-- BARRA DE NAVEGACIÓN SUPERIOR (ROLES + IDIOMA) -->
+  <header class="top-nav">
+    <div class="top-nav-inner">
+      <nav class="role-nav-group" aria-label="Selección de perfil">
+        <span class="role-nav-label lang-es">{common.es.rolesNavTitle}</span>
+        <span class="role-nav-label lang-en">{common.en.rolesNavTitle}</span>
+        {
+          Object.values(roles).map((r) => {
+            const isActive = r.slug === currentRoleKey;
+            return (
+              <a
+                href={`${baseUrl}cv/${r.slug}/`}
+                class={`role-tab ${isActive ? "active" : ""}`}
+                aria-current={isActive ? "page" : undefined}
+              >
+                <span class="lang-es">{r.label.es}</span>
+                <span class="lang-en">{r.label.en}</span>
+              </a>
+            );
+          })
+        }
+      </nav>
+
+      <div class="lang-toggle-group" role="tablist" aria-label="Selector de idioma">
+        <button class="lang-btn active" data-lang="es" type="button">ES</button>
+        <button class="lang-btn" data-lang="en" type="button">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="document-container">
+    <article class="cv-card">
+      <!-- ENCABEZADO INSTITUCIONAL -->
+      <section class="cv-header">
+        <h1 class="header-name">{common.es.name}</h1>
+        <p class="header-title">
+          <span class="lang-es">{currentRole.es.title}</span>
+          <span class="lang-en">{currentRole.en.title}</span>
+        </p>
+
+        <p class="header-bio lang-es">{currentRole.es.bio}</p>
+        <p class="header-bio lang-en">{currentRole.en.bio}</p>
+
+        <div class="header-contact-bar">
+          <span class="contact-item">
+            {common.es.location}
+          </span>
+          <a class="contact-item" href={`mailto:${common.es.email}`}>
+            ✉️ {common.es.email}
+          </a>
+        </div>
+
+        <div class="header-actions">
+          <Social />
+
+          <div>
+            <a
+              href={`${baseUrl}assets/CV.pdf`}
+              download={currentRole.es.pdfName}
+              class="btn-download-cv lang-es"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              {common.es.downloadCV}
+            </a>
+
+            <a
+              href={`${baseUrl}assets/CV.pdf`}
+              download={currentRole.en.pdfName}
+              class="btn-download-cv lang-en"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              {common.en.downloadCV}
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- CUERPO DEL CV (PANEL ESPAÑOL) -->
+      <div class="cv-body lang-panel" data-lang-panel="es">
+        <!-- COMPETENCIAS TÉCNICAS -->
+        <section class="cv-section">
+          <h2 class="section-title">{common.es.skillsTitle}</h2>
+          <div class="skills-grid">
+            {currentRole.es.skills.map((skill) => (
+              <span class="skill-tag">{skill}</span>
+            ))}
+          </div>
+        </section>
+
+        <!-- EXPERIENCIA LABORAL -->
+        <section class="cv-section">
+          <h2 class="section-title">{common.es.workExperienceTitle}</h2>
+          <div class="timeline">
+            {common.es.jobs.map((job) => (
+              <div class="timeline-item">
+                <div class="item-header">
+                  <h3 class="item-title">{job.role}</h3>
+                  <span class="item-period">{job.period}</span>
+                </div>
+                <div class="item-subtitle">{job.company}</div>
+                <ul class="item-bullets">
+                  {job.bullets.map((bullet) => (
+                    <li>{bullet}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <!-- EDUCACIÓN -->
+        <section class="cv-section">
+          <h2 class="section-title">{common.es.educationTitle}</h2>
+          <div class="education-grid">
+            {common.es.education.map((edu) => (
+              <div class="education-item">
+                <div class="education-degree">{edu.degree}</div>
+                <div class="education-institution">{edu.institution}</div>
+                <span class="education-status">{edu.status}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <!-- CERTIFICACIONES -->
+        <section class="cv-section">
+          <h2 class="section-title">{common.es.certificationsTitle}</h2>
+          <ul class="certifications-list">
+            {common.es.certifications.map((cert) => (
+              <li>{cert}</li>
+            ))}
+          </ul>
+        </section>
+      </div>
+
+      <!-- CUERPO DEL CV (PANEL INGLÉS) -->
+      <div class="cv-body lang-panel" data-lang-panel="en">
+        <!-- TECHNICAL SKILLS -->
+        <section class="cv-section">
+          <h2 class="section-title">{common.en.skillsTitle}</h2>
+          <div class="skills-grid">
+            {currentRole.en.skills.map((skill) => (
+              <span class="skill-tag">{skill}</span>
+            ))}
+          </div>
+        </section>
+
+        <!-- WORK EXPERIENCE -->
+        <section class="cv-section">
+          <h2 class="section-title">{common.en.workExperienceTitle}</h2>
+          <div class="timeline">
+            {common.en.jobs.map((job) => (
+              <div class="timeline-item">
+                <div class="item-header">
+                  <h3 class="item-title">{job.role}</h3>
+                  <span class="item-period">{job.period}</span>
+                </div>
+                <div class="item-subtitle">{job.company}</div>
+                <ul class="item-bullets">
+                  {job.bullets.map((bullet) => (
+                    <li>{bullet}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <!-- EDUCATION -->
+        <section class="cv-section">
+          <h2 class="section-title">{common.en.educationTitle}</h2>
+          <div class="education-grid">
+            {common.en.education.map((edu) => (
+              <div class="education-item">
+                <div class="education-degree">{edu.degree}</div>
+                <div class="education-institution">{edu.institution}</div>
+                <span class="education-status">{edu.status}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <!-- CERTIFICATIONS -->
+        <section class="cv-section">
+          <h2 class="section-title">{common.en.certificationsTitle}</h2>
+          <ul class="certifications-list">
+            {common.en.certifications.map((cert) => (
+              <li>{cert}</li>
+            ))}
+          </ul>
+        </section>
+      </div>
+    </article>
+
+    <footer class="cv-footer">
+      <p>{common.es.name} &bull; La Plata, Buenos Aires, Argentina</p>
+    </footer>
+  </main>
+
+  <!-- CLIENT-SIDE LANGUAGE SCRIPT -->
+  <script>
+    const storedLang = localStorage.getItem("preferred-lang");
+    const browserLang = (navigator.languages?.[0] || navigator.language || "es").toLowerCase();
+    const initialLang = storedLang || (browserLang.startsWith("en") ? "en" : "es");
+
+    const buttons = document.querySelectorAll<HTMLButtonElement>(".lang-btn");
+
+    function applyLanguage(lang: string) {
+      document.documentElement.setAttribute("data-active-lang", lang);
+      document.documentElement.setAttribute("lang", lang);
+      localStorage.setItem("preferred-lang", lang);
+
+      buttons.forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.lang === lang);
+      });
+    }
+
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const lang = btn.dataset.lang || "es";
+        applyLanguage(lang);
+      });
+    });
+
+    applyLanguage(initialLang);
+  </script>
+</Layout>
