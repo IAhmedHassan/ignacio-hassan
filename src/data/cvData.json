@@ -1,0 +1,190 @@
+{
+  "common": {
+    "es": {
+      "name": "Ignacio Ahmed Hassan",
+      "location": "📍 La Plata, Buenos Aires, Argentina",
+      "email": "ignacioahmedhassan@gmail.com",
+      "downloadCV": "Descargar CV (PDF)",
+      "rolesNavTitle": "Perfil profesional:",
+      "workExperienceTitle": "Experiencia Laboral",
+      "educationTitle": "Educación",
+      "skillsTitle": "Competencias y Habilidades Técnicas",
+      "certificationsTitle": "Certificaciones",
+      "jobs": [
+        {
+          "role": "Analista Funcional",
+          "company": "Ministerio de Economía de la Provincia de Buenos Aires",
+          "period": "Agosto 2025 – Presente",
+          "bullets": [
+            "Relevamiento y diseño funcional para la transición de sistemas legacy hacia nuevas arquitecturas, asegurando la integridad de los procesos de negocio.",
+            "Definición, documentación y traducción de necesidades operativas en especificaciones técnicas mediante entrevistas y workshops con usuarios clave.",
+            "Desarrollo de prototipos funcionales y automatización de procesos operativos mediante Google Sheets y Google Apps Script.",
+            "Actuación como nexo estratégico entre gerencia, equipo operativo y desarrollo, asegurando la correcta alineación técnica.",
+            "Diseño y ejecución de pruebas funcionales (QA y UAT) para validar criterios de aceptación y estándares de calidad.",
+            "Gestión integral de tickets, diagnóstico de incidentes en producción y soporte post-implementación."
+          ]
+        },
+        {
+          "role": "Data Curator",
+          "company": "Veeva Systems",
+          "period": "Febrero 2025 – Presente",
+          "bullets": [
+            "Gestión y validación de conjuntos de datos para clientes de industrias farmacéuticas y ciencias de la vida.",
+            "Aseguramiento de la integridad, consistencia y cumplimiento de estándares del sector."
+          ]
+        },
+        {
+          "role": "Especialista en Soluciones Técnicas",
+          "company": "Multimedio Trinchera",
+          "period": "2023 – Enero 2025",
+          "bullets": [
+            "Diseño e implementación de un sistema de sorteos con interfaces para proveedor y sorteador.",
+            "Soporte técnico, diagnóstico y mantenimiento de infraestructura."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "degree": "Licenciatura en Informática",
+          "institution": "Universidad Nacional de La Plata, 2024 – Presente",
+          "status": "60% de la carrera aprobada"
+        },
+        {
+          "degree": "Analista de Sistemas Universitario",
+          "institution": "Universidad Nacional de La Plata, 2024 – Presente",
+          "status": "80% de la carrera aprobada"
+        }
+      ],
+      "certifications": [
+        "Certificación de inglés nivel B2 – Instituto TS Eliot (2016)"
+      ]
+    },
+    "en": {
+      "name": "Ignacio Ahmed Hassan",
+      "location": "📍 La Plata, Buenos Aires, Argentina",
+      "email": "ignacioahmedhassan@gmail.com",
+      "downloadCV": "Download Resume (PDF)",
+      "rolesNavTitle": "Target Profile:",
+      "workExperienceTitle": "Work Experience",
+      "educationTitle": "Education",
+      "skillsTitle": "Technical Skills & Competencies",
+      "certificationsTitle": "Certifications",
+      "jobs": [
+        {
+          "role": "Functional Analyst",
+          "company": "Ministry of Economy of Buenos Aires Province",
+          "period": "August 2025 – Present",
+          "bullets": [
+            "Requirements gathering and functional design for transitioning legacy systems to modern architectures, ensuring business process integrity.",
+            "Definition, documentation, and translation of operational needs into detailed technical specifications through stakeholder workshops and interviews.",
+            "Functional prototyping and operational process automation leveraging Google Sheets and Google Apps Script.",
+            "Strategic liaison between management, operational staff, and development teams, ensuring alignment on project objectives.",
+            "Design and execution of functional test plans (QA and UAT) to validate deliverables against acceptance criteria.",
+            "Comprehensive ticket lifecycle management, production incident diagnosis, and post-deployment operational support."
+          ]
+        },
+        {
+          "role": "Data Curator",
+          "company": "Veeva Systems",
+          "period": "February 2025 – Present",
+          "bullets": [
+            "Management and validation of complex data sets for clients in pharmaceutical and life sciences industries.",
+            "Ensuring data integrity, strict consistency, and regulatory compliance standards."
+          ]
+        },
+        {
+          "role": "Technical Solutions Specialist",
+          "company": "Multimedio Trinchera",
+          "period": "2023 – January 2025",
+          "bullets": [
+            "Design and implementation of a custom giveaway management system with dual vendor/operator interfaces.",
+            "Technical support, hardware maintenance, and infrastructure diagnosis."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "degree": "Bachelor of Computer Science",
+          "institution": "Universidad Nacional de La Plata, 2024 – Present",
+          "status": "60% of degree completed"
+        },
+        {
+          "degree": "University Systems Analyst",
+          "institution": "Universidad Nacional de La Plata, 2024 – Present",
+          "status": "80% of degree completed"
+        }
+      ],
+      "certifications": [
+        "English Language Certification Level B2 – Instituto TS Eliot (2016)"
+      ]
+    }
+  },
+  "roles": {
+    "analista-funcional": {
+      "slug": "analista-funcional",
+      "label": {
+        "es": "Analista Funcional",
+        "en": "Functional Analyst"
+      },
+      "es": {
+        "title": "Analista Funcional",
+        "bio": "Estudiante de Licenciatura en Sistemas en la Universidad Nacional de La Plata (UNLP) y Analista Funcional con experiencia en la modernización de sistemas legacy en el sector público. Actúo como nexo estratégico entre las áreas de negocio y los equipos de desarrollo, gestionando el ciclo de vida de los requerimientos, desde el relevamiento hasta las pruebas de calidad (QA/UAT). Complemento mi perfil analítico con habilidades técnicas en desarrollo ágil de prototipos y automatización de procesos operativos (Google Apps Script).",
+        "skills": [
+          "Relevamiento y Análisis de Requerimientos (Workshops, User Stories)",
+          "Diseño Funcional y Modernización de Sistemas Legacy",
+          "Diseño y Ejecución de Pruebas Funcionales (QA / UAT)",
+          "Automatización Operativa y Prototipado (Google Apps Script, Sheets)",
+          "Bases de Datos y Consultas SQL (Nivel Intermedio)",
+          "Gestión de Tickets y Soporte Post-Implementación"
+        ],
+        "pdfName": "CV_Ignacio_Hassan_Analista_Funcional.pdf"
+      },
+      "en": {
+        "title": "Functional Analyst",
+        "bio": "Computer Science undergraduate at Universidad Nacional de La Plata (UNLP) and Functional Analyst with practical experience modernizing legacy systems in the public sector. Strategic bridge between business units and software engineers, driving the full requirements lifecycle from discovery through quality assurance (QA/UAT). Analytical mindset complemented by hands-on prototyping and operational automation skills (Google Apps Script).",
+        "skills": [
+          "Requirements Gathering & Analysis (Workshops, User Stories)",
+          "Functional System Design & Legacy Modernization",
+          "Functional Testing Design & Execution (QA / UAT)",
+          "Operational Process Automation & Prototyping (Google Apps Script, Sheets)",
+          "Relational Databases & SQL Queries (Intermediate)",
+          "Production Ticket Triage & Post-Implementation Support"
+        ],
+        "pdfName": "CV_Ignacio_Hassan_Functional_Analyst.pdf"
+      }
+    },
+    "qa": {
+      "slug": "qa",
+      "label": {
+        "es": "Analista QA",
+        "en": "QA Analyst"
+      },
+      "es": {
+        "title": "Analista de Aseguramiento de Calidad (QA)",
+        "bio": "Estudiante de Licenciatura en Sistemas en la UNLP enfocado en Aseguramiento de Calidad de Software (QA). Cuento con experiencia práctica en el diseño y ejecución de casos de prueba funcionales (QA/UAT), validación e integridad de conjuntos de datos bajo estándares rigurosos (Veeva Systems), y gestión de incidentes en producción (Ministerio de Economía). Poseo una sólida base técnica en consultas SQL, entornos Linux y testing de requerimientos.",
+        "skills": [
+          "Diseño y Ejecución de Casos de Prueba Funcionales (QA & UAT)",
+          "Validación, Curaduría e Integridad de Datos (Data Quality)",
+          "Gestión de Ciclo de Vida de Defectos y Tickets de Producción",
+          "Consultas SQL para Validación e Inspección de Datos",
+          "Entornos Linux y Shell Scripting (Uso diario)",
+          "Criterios de Aceptación y Verificación de Reglas de Negocio"
+        ],
+        "pdfName": "CV_Ignacio_Hassan_QA.pdf"
+      },
+      "en": {
+        "title": "Quality Assurance (QA) Analyst",
+        "bio": "Computer Science undergraduate at UNLP with a focus on Software Quality Assurance (QA). Practical experience in designing and executing functional test cases (QA/UAT), data validation and integrity under strict compliance standards (Veeva Systems), and incident diagnosis in public administration environments (Ministry of Economy). Strong technical foundation in SQL queries, Linux environments, and requirements verification.",
+        "skills": [
+          "Functional Test Case Design & Execution (QA & UAT)",
+          "Data Quality, Integrity & Curation",
+          "Defect Lifecycle Management & Production Incident Triage",
+          "SQL Queries for Data Verification & Validation",
+          "Linux Environments & Scripting (Daily use)",
+          "Acceptance Criteria & Business Rule Verification"
+        ],
+        "pdfName": "CV_Ignacio_Hassan_QA.pdf"
+      }
+    }
+  }
+}
