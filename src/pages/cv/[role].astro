@@ -113,18 +113,8 @@ const pageTitle = `${common.es.name} | ${currentRole.es.title}`;
 
       <!-- CUERPO DEL CV (PANEL ESPAÑOL) -->
       <div class="cv-body lang-panel" data-lang-panel="es">
-        <!-- COMPETENCIAS TÉCNICAS -->
-        <section class="cv-section">
-          <h2 class="section-title">{common.es.skillsTitle}</h2>
-          <div class="skills-grid">
-            {currentRole.es.skills.map((skill) => (
-              <span class="skill-tag">{skill}</span>
-            ))}
-          </div>
-        </section>
-
         <!-- EXPERIENCIA LABORAL -->
-        <section class="cv-section">
+        <section class="cv-section cv-section--experience">
           <h2 class="section-title">{common.es.workExperienceTitle}</h2>
           <div class="timeline">
             {common.es.jobs.map((job) => (
@@ -144,45 +134,88 @@ const pageTitle = `${common.es.name} | ${currentRole.es.title}`;
           </div>
         </section>
 
-        <!-- EDUCACIÓN -->
-        <section class="cv-section">
-          <h2 class="section-title">{common.es.educationTitle}</h2>
-          <div class="education-grid">
-            {common.es.education.map((edu) => (
-              <div class="education-item">
-                <div class="education-degree">{edu.degree}</div>
-                <div class="education-institution">{edu.institution}</div>
-                <span class="education-status">{edu.status}</span>
-              </div>
+        <aside class="cv-side">
+          <!-- EDUCACIÓN -->
+          <section class="cv-section">
+            <h2 class="section-title">{common.es.educationTitle}</h2>
+            <div class="education-grid">
+              {common.es.education.map((edu) => (
+                <div class="education-item">
+                  <div class="education-degree">{edu.degree}</div>
+                  <div class="education-institution">{edu.institution}</div>
+                  <span class="education-status">{edu.status}</span>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <!-- CERTIFICACIONES -->
+          <section class="cv-section">
+            <h2 class="section-title">{common.es.certificationsTitle}</h2>
+            <ul class="certifications-list">
+              {common.es.certifications.map((cert) => (
+                <li>{cert}</li>
+              ))}
+            </ul>
+          </section>
+        </aside>
+
+        <!-- PROYECTOS ACADÉMICOS -->
+        <section class="cv-section cv-section--projects">
+          <h2 class="section-title">{common.es.academicProjectsTitle}</h2>
+          <div class="projects-grid">
+            {currentRole.es.projects.map((project) => (
+              <article class="project-card">
+                <div class="project-head">
+                  <h3 class="project-name">{project.name}</h3>
+                  <span class="project-period">{project.period}</span>
+                </div>
+                <div class="project-context">{project.context}</div>
+                <div class="project-role">{project.roleInTeam}</div>
+                <p class="project-desc">{project.description}</p>
+                <div class="project-stack">
+                  {project.stack.map((tech) => (
+                    <span class="skill-tag">{tech}</span>
+                  ))}
+                </div>
+                <a
+                  class="project-link"
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {common.es.repoLinkLabel}
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                </a>
+              </article>
             ))}
           </div>
         </section>
 
-        <!-- CERTIFICACIONES -->
-        <section class="cv-section">
-          <h2 class="section-title">{common.es.certificationsTitle}</h2>
-          <ul class="certifications-list">
-            {common.es.certifications.map((cert) => (
-              <li>{cert}</li>
+        <!-- COMPETENCIAS Y HABILIDADES TÉCNICAS -->
+        <section class="cv-section cv-section--skills">
+          <h2 class="section-title">{common.es.skillsTitle}</h2>
+          <div class="skills-highlight">
+            {currentRole.es.keySkills.map((skill) => (
+              <span class="skill-pill skill-pill--key">{skill}</span>
             ))}
-          </ul>
+          </div>
+          {currentRole.es.secondarySkills?.length > 0 && (
+            <p class="skills-secondary">
+              También: {currentRole.es.secondarySkills.join(", ")}
+            </p>
+          )}
         </section>
       </div>
 
       <!-- CUERPO DEL CV (PANEL INGLÉS) -->
       <div class="cv-body lang-panel" data-lang-panel="en">
-        <!-- TECHNICAL SKILLS -->
-        <section class="cv-section">
-          <h2 class="section-title">{common.en.skillsTitle}</h2>
-          <div class="skills-grid">
-            {currentRole.en.skills.map((skill) => (
-              <span class="skill-tag">{skill}</span>
-            ))}
-          </div>
-        </section>
-
         <!-- WORK EXPERIENCE -->
-        <section class="cv-section">
+        <section class="cv-section cv-section--experience">
           <h2 class="section-title">{common.en.workExperienceTitle}</h2>
           <div class="timeline">
             {common.en.jobs.map((job) => (
@@ -202,28 +235,81 @@ const pageTitle = `${common.es.name} | ${currentRole.es.title}`;
           </div>
         </section>
 
-        <!-- EDUCATION -->
-        <section class="cv-section">
-          <h2 class="section-title">{common.en.educationTitle}</h2>
-          <div class="education-grid">
-            {common.en.education.map((edu) => (
-              <div class="education-item">
-                <div class="education-degree">{edu.degree}</div>
-                <div class="education-institution">{edu.institution}</div>
-                <span class="education-status">{edu.status}</span>
-              </div>
+        <aside class="cv-side">
+          <!-- EDUCATION -->
+          <section class="cv-section">
+            <h2 class="section-title">{common.en.educationTitle}</h2>
+            <div class="education-grid">
+              {common.en.education.map((edu) => (
+                <div class="education-item">
+                  <div class="education-degree">{edu.degree}</div>
+                  <div class="education-institution">{edu.institution}</div>
+                  <span class="education-status">{edu.status}</span>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <!-- CERTIFICATIONS -->
+          <section class="cv-section">
+            <h2 class="section-title">{common.en.certificationsTitle}</h2>
+            <ul class="certifications-list">
+              {common.en.certifications.map((cert) => (
+                <li>{cert}</li>
+              ))}
+            </ul>
+          </section>
+        </aside>
+
+        <!-- ACADEMIC PROJECTS -->
+        <section class="cv-section cv-section--projects">
+          <h2 class="section-title">{common.en.academicProjectsTitle}</h2>
+          <div class="projects-grid">
+            {currentRole.en.projects.map((project) => (
+              <article class="project-card">
+                <div class="project-head">
+                  <h3 class="project-name">{project.name}</h3>
+                  <span class="project-period">{project.period}</span>
+                </div>
+                <div class="project-context">{project.context}</div>
+                <div class="project-role">{project.roleInTeam}</div>
+                <p class="project-desc">{project.description}</p>
+                <div class="project-stack">
+                  {project.stack.map((tech) => (
+                    <span class="skill-tag">{tech}</span>
+                  ))}
+                </div>
+                <a
+                  class="project-link"
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {common.en.repoLinkLabel}
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                </a>
+              </article>
             ))}
           </div>
         </section>
 
-        <!-- CERTIFICATIONS -->
-        <section class="cv-section">
-          <h2 class="section-title">{common.en.certificationsTitle}</h2>
-          <ul class="certifications-list">
-            {common.en.certifications.map((cert) => (
-              <li>{cert}</li>
+        <!-- TECHNICAL SKILLS & COMPETENCIES -->
+        <section class="cv-section cv-section--skills">
+          <h2 class="section-title">{common.en.skillsTitle}</h2>
+          <div class="skills-highlight">
+            {currentRole.en.keySkills.map((skill) => (
+              <span class="skill-pill skill-pill--key">{skill}</span>
             ))}
-          </ul>
+          </div>
+          {currentRole.en.secondarySkills?.length > 0 && (
+            <p class="skills-secondary">
+              Also: {currentRole.en.secondarySkills.join(", ")}
+            </p>
+          )}
         </section>
       </div>
     </article>
@@ -259,5 +345,7 @@ const pageTitle = `${common.es.name} | ${currentRole.es.title}`;
     });
 
     applyLanguage(initialLang);
+
+    // Sin interacción de resaltado por proyecto (competencias curadas).
   </script>
 </Layout>

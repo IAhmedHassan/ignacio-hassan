@@ -10,6 +10,8 @@
       "educationTitle": "Educación",
       "skillsTitle": "Competencias y Habilidades Técnicas",
       "certificationsTitle": "Certificaciones",
+      "academicProjectsTitle": "Proyectos Académicos",
+      "repoLinkLabel": "Ver repositorio",
       "jobs": [
         {
           "role": "Analista Funcional",
@@ -69,6 +71,8 @@
       "educationTitle": "Education",
       "skillsTitle": "Technical Skills & Competencies",
       "certificationsTitle": "Certifications",
+      "academicProjectsTitle": "Academic Projects",
+      "repoLinkLabel": "View repository",
       "jobs": [
         {
           "role": "Functional Analyst",
@@ -129,26 +133,124 @@
       "es": {
         "title": "Analista Funcional",
         "bio": "Estudiante de Licenciatura en Sistemas en la Universidad Nacional de La Plata (UNLP) y Analista Funcional con experiencia en la modernización de sistemas legacy en el sector público. Actúo como nexo estratégico entre las áreas de negocio y los equipos de desarrollo, gestionando el ciclo de vida de los requerimientos, desde el relevamiento hasta las pruebas de calidad (QA/UAT). Complemento mi perfil analítico con habilidades técnicas en desarrollo ágil de prototipos y automatización de procesos operativos (Google Apps Script).",
-        "skills": [
-          "Relevamiento y Análisis de Requerimientos (Workshops, User Stories)",
-          "Diseño Funcional y Modernización de Sistemas Legacy",
-          "Diseño y Ejecución de Pruebas Funcionales (QA / UAT)",
-          "Automatización Operativa y Prototipado (Google Apps Script, Sheets)",
-          "Bases de Datos y Consultas SQL (Nivel Intermedio)",
-          "Gestión de Tickets y Soporte Post-Implementación"
+        "keySkills": [
+          "Relevamiento y elicitación de requerimientos",
+          "Modelado funcional y reglas de negocio",
+          "Documentación funcional (SRS, casos de uso)",
+          "Criterios de aceptación y pruebas QA / UAT",
+          "Diseño funcional y modernización de sistemas legacy",
+          "Prototipado y automatización de procesos",
+          ".NET / C# (ASP.NET Core)",
+          "SQL y modelado de datos"
+        ],
+        "secondarySkills": [
+          "Diseño y ejecución de pruebas funcionales (QA / UAT)",
+          "Gestión del ciclo de vida de defectos y tickets de producción",
+          "Pruebas unitarias (.NET · xUnit + FluentAssertions)",
+          "React 19 + TypeScript (Vite)",
+          "HTML, CSS y JavaScript",
+          "Git y control de versiones",
+          "Accesibilidad web (WCAG 2.2)",
+          "Entity Framework Core",
+          "SQLite y modelado relacional",
+          "Validación, integridad y curaduría de datos",
+          "Google Workspace (Sheets, Apps Script)",
+          "Entornos Linux (uso diario)",
+          "Documentación de APIs (Scalar / OpenAPI)",
+          "Gestión de tickets y soporte post-implementación",
+          "Metodologías ágiles y trabajo en equipo"
+        ],
+        "projects": [
+          {
+            "name": "RehabilitAR – Sistema de gestión para centros de kinesiología",
+            "context": "Ingeniería de Software II (IS2) · UNLP · Equipo Código Quokka",
+            "period": "2026",
+            "roleInTeam": "Analista Funcional · QA · Backend",
+            "description": "Digitalización integral de la administración de un centro kinesiológico. Participé en el relevamiento de requisitos y en la definición de las reglas de negocio (roles y permisos, control de cupos, listas de espera priorizadas y descuentos por cancelaciones), en la redacción de la documentación funcional (SRS y PGP) y en el diseño de los criterios de aceptación. Colaboré además en el backend con .NET 10 y en la validación funcional del sistema.",
+            "stack": [
+              ".NET 10",
+              "ASP.NET Core",
+              "EF Core",
+              "SQLite",
+              "JWT / Identity",
+              "xUnit",
+              "React 19",
+              "TypeScript",
+              "Tailwind CSS"
+            ],
+            "link": "https://github.com/codigo-quokka/rehabilitar"
+          },
+          {
+            "name": "Sistema de gestión del Centro Deportivo Universitario",
+            "context": "Seminario de Lenguajes (.NET) · UNLP",
+            "period": "2025",
+            "roleInTeam": "Desarrollador",
+            "description": "Sistema de gestión de personas, eventos deportivos y reservas, migrado de una versión de consola a una interfaz gráfica en C#. Trabajé sobre una arquitectura por capas con casos de uso, entidades de dominio y validadores de reglas de negocio, con persistencia en SQLite.",
+            "stack": ["C#", ".NET", "SQLite", "Arquitectura por capas"],
+            "link": "https://github.com/geonnn/centro-deportivo"
+          }
         ],
         "pdfName": "CV_Ignacio_Hassan_Analista_Funcional.pdf"
       },
       "en": {
         "title": "Functional Analyst",
         "bio": "Computer Science undergraduate at Universidad Nacional de La Plata (UNLP) and Functional Analyst with practical experience modernizing legacy systems in the public sector. Strategic bridge between business units and software engineers, driving the full requirements lifecycle from discovery through quality assurance (QA/UAT). Analytical mindset complemented by hands-on prototyping and operational automation skills (Google Apps Script).",
-        "skills": [
-          "Requirements Gathering & Analysis (Workshops, User Stories)",
-          "Functional System Design & Legacy Modernization",
-          "Functional Testing Design & Execution (QA / UAT)",
-          "Operational Process Automation & Prototyping (Google Apps Script, Sheets)",
-          "Relational Databases & SQL Queries (Intermediate)",
-          "Production Ticket Triage & Post-Implementation Support"
+        "keySkills": [
+          "Requirements elicitation",
+          "Functional modeling & business rules",
+          "Functional documentation (SRS, use cases)",
+          "Acceptance criteria & QA / UAT",
+          "Functional design & legacy modernization",
+          "Prototyping & process automation",
+          ".NET / C# (ASP.NET Core)",
+          "SQL & data modeling"
+        ],
+        "secondarySkills": [
+          "Functional test design & execution (QA / UAT)",
+          "Defect lifecycle management & production ticket triage",
+          "Unit testing (.NET · xUnit + FluentAssertions)",
+          "React 19 + TypeScript (Vite)",
+          "HTML, CSS & JavaScript",
+          "Git & version control",
+          "Web accessibility (WCAG 2.2)",
+          "Entity Framework Core",
+          "SQLite & relational modeling",
+          "Data validation, integrity & curation",
+          "Google Workspace (Sheets, Apps Script)",
+          "Linux environments (daily use)",
+          "API documentation (Scalar / OpenAPI)",
+          "Ticket management & post-implementation support",
+          "Agile methodologies & teamwork"
+        ],
+        "projects": [
+          {
+            "name": "RehabilitAR – Management system for kinesiology centers",
+            "context": "Software Engineering II (IS2) · UNLP · Team Código Quokka",
+            "period": "2026",
+            "roleInTeam": "Functional Analyst · QA · Backend",
+            "description": "End-to-end digitalization of a kinesiology center's administration. I took part in requirements elicitation and in defining business rules (roles and permissions, capacity control, prioritized waiting lists and cancellation discounts), in writing the functional documentation (SRS and PGP) and in designing acceptance criteria. I also contributed to the backend with .NET 10 and to the functional validation of the system.",
+            "stack": [
+              ".NET 10",
+              "ASP.NET Core",
+              "EF Core",
+              "SQLite",
+              "JWT / Identity",
+              "xUnit",
+              "React 19",
+              "TypeScript",
+              "Tailwind CSS"
+            ],
+            "link": "https://github.com/codigo-quokka/rehabilitar"
+          },
+          {
+            "name": "University Sports Center management system",
+            "context": "Language Seminar (.NET) · UNLP",
+            "period": "2025",
+            "roleInTeam": "Developer",
+            "description": "System for managing people, sports events and reservations, migrated from a console version to a C# graphical interface. I worked on a layered architecture with use cases, domain entities and business-rule validators, with SQLite persistence.",
+            "stack": ["C#", ".NET", "SQLite", "Layered architecture"],
+            "link": "https://github.com/geonnn/centro-deportivo"
+          }
         ],
         "pdfName": "CV_Ignacio_Hassan_Functional_Analyst.pdf"
       }
@@ -162,26 +264,122 @@
       "es": {
         "title": "Analista de Aseguramiento de Calidad (QA)",
         "bio": "Estudiante de Licenciatura en Sistemas en la UNLP enfocado en Aseguramiento de Calidad de Software (QA). Cuento con experiencia práctica en el diseño y ejecución de casos de prueba funcionales (QA/UAT), validación e integridad de conjuntos de datos bajo estándares rigurosos (Veeva Systems), y gestión de incidentes en producción (Ministerio de Economía). Poseo una sólida base técnica en consultas SQL, entornos Linux y testing de requerimientos.",
-        "skills": [
-          "Diseño y Ejecución de Casos de Prueba Funcionales (QA & UAT)",
-          "Validación, Curaduría e Integridad de Datos (Data Quality)",
-          "Gestión de Ciclo de Vida de Defectos y Tickets de Producción",
-          "Consultas SQL para Validación e Inspección de Datos",
-          "Entornos Linux y Shell Scripting (Uso diario)",
-          "Criterios de Aceptación y Verificación de Reglas de Negocio"
+        "keySkills": [
+          "Diseño y ejecución de pruebas funcionales (QA & UAT)",
+          "Pruebas unitarias (.NET · xUnit)",
+          "Gestión del ciclo de vida de defectos",
+          "Validación, curaduría e integridad de datos (Data Quality)",
+          "Análisis de requerimientos y criterios de aceptación",
+          "Consultas SQL para validación de datos",
+          "Entornos Linux y Shell Scripting",
+          "Documentación funcional (SRS, casos de uso)"
+        ],
+        "secondarySkills": [
+          "Verificación de reglas de negocio y casos de uso",
+          "Interpretación de especificaciones para el diseño de pruebas",
+          "Criterios de aceptación y verificación de reglas de negocio",
+          ".NET / C# (ASP.NET Core, Clean Architecture)",
+          "React 19 + TypeScript (Vite)",
+          "HTML, CSS y JavaScript",
+          "Git y control de versiones",
+          "Accesibilidad web (WCAG 2.2)",
+          "Entity Framework Core",
+          "SQLite y modelado relacional",
+          "Documentación de APIs (Scalar / OpenAPI)",
+          "Gestión de tickets e incidentes en producción",
+          "Google Workspace (Sheets, Apps Script)",
+          "Metodologías ágiles y trabajo en equipo"
+        ],
+        "projects": [
+          {
+            "name": "RehabilitAR – Sistema de gestión para centros de kinesiología",
+            "context": "Ingeniería de Software II (IS2) · UNLP · Equipo Código Quokka",
+            "period": "2026",
+            "roleInTeam": "QA · Analista Funcional · Backend",
+            "description": "Sistema de gestión para centros de kinesiología. Diseñé y ejecuté pruebas para validar reglas de negocio críticas (control de cupos, listas de espera y descuentos por cancelaciones), apoyándome en una suite de pruebas unitarias con xUnit y FluentAssertions. Verifiqué criterios de aceptación e integridad de datos, y colaboré en el backend con .NET 10.",
+            "stack": [
+              ".NET 10",
+              "ASP.NET Core",
+              "EF Core",
+              "SQLite",
+              "JWT / Identity",
+              "xUnit",
+              "React 19",
+              "TypeScript",
+              "Tailwind CSS"
+            ],
+            "link": "https://github.com/codigo-quokka/rehabilitar"
+          },
+          {
+            "name": "Sistema de gestión del Centro Deportivo Universitario",
+            "context": "Seminario de Lenguajes (.NET) · UNLP",
+            "period": "2025",
+            "roleInTeam": "Desarrollador",
+            "description": "Sistema de gestión de personas, eventos y reservas con interfaz gráfica en C#. Contribuí a la verificación de las reglas de negocio mediante validadores y casos de uso, asegurando la consistencia de la persistencia en SQLite bajo una arquitectura por capas.",
+            "stack": ["C#", ".NET", "SQLite", "Arquitectura por capas"],
+            "link": "https://github.com/geonnn/centro-deportivo"
+          }
         ],
         "pdfName": "CV_Ignacio_Hassan_QA.pdf"
       },
       "en": {
         "title": "Quality Assurance (QA) Analyst",
         "bio": "Computer Science undergraduate at UNLP with a focus on Software Quality Assurance (QA). Practical experience in designing and executing functional test cases (QA/UAT), data validation and integrity under strict compliance standards (Veeva Systems), and incident diagnosis in public administration environments (Ministry of Economy). Strong technical foundation in SQL queries, Linux environments, and requirements verification.",
-        "skills": [
-          "Functional Test Case Design & Execution (QA & UAT)",
-          "Data Quality, Integrity & Curation",
-          "Defect Lifecycle Management & Production Incident Triage",
-          "SQL Queries for Data Verification & Validation",
-          "Linux Environments & Scripting (Daily use)",
-          "Acceptance Criteria & Business Rule Verification"
+        "keySkills": [
+          "Functional test design & execution (QA & UAT)",
+          "Unit testing (.NET · xUnit)",
+          "Defect lifecycle management",
+          "Data validation, integrity & curation (Data Quality)",
+          "Requirements analysis & acceptance criteria",
+          "SQL queries for data validation",
+          "Linux environments & Shell scripting",
+          "Functional documentation (SRS, use cases)"
+        ],
+        "secondarySkills": [
+          "Business rule & use case verification",
+          "Specification interpretation for test design",
+          "Acceptance criteria & business rule verification",
+          ".NET / C# (ASP.NET Core, Clean Architecture)",
+          "React 19 + TypeScript (Vite)",
+          "HTML, CSS & JavaScript",
+          "Git & version control",
+          "Web accessibility (WCAG 2.2)",
+          "Entity Framework Core",
+          "SQLite & relational modeling",
+          "API documentation (Scalar / OpenAPI)",
+          "Ticket & production incident management",
+          "Google Workspace (Sheets, Apps Script)",
+          "Agile methodologies & teamwork"
+        ],
+        "projects": [
+          {
+            "name": "RehabilitAR – Management system for kinesiology centers",
+            "context": "Software Engineering II (IS2) · UNLP · Team Código Quokka",
+            "period": "2026",
+            "roleInTeam": "QA · Functional Analyst · Backend",
+            "description": "Management system for kinesiology centers. I designed and executed tests to validate critical business rules (capacity control, waiting lists and cancellation discounts), backed by a unit test suite built with xUnit and FluentAssertions. I verified acceptance criteria and data integrity, and contributed to the backend with .NET 10.",
+            "stack": [
+              ".NET 10",
+              "ASP.NET Core",
+              "EF Core",
+              "SQLite",
+              "JWT / Identity",
+              "xUnit",
+              "React 19",
+              "TypeScript",
+              "Tailwind CSS"
+            ],
+            "link": "https://github.com/codigo-quokka/rehabilitar"
+          },
+          {
+            "name": "University Sports Center management system",
+            "context": "Language Seminar (.NET) · UNLP",
+            "period": "2025",
+            "roleInTeam": "Developer",
+            "description": "System for managing people, events and reservations with a C# graphical interface. I contributed to verifying business rules through validators and use cases, ensuring consistency of SQLite persistence within a layered architecture.",
+            "stack": ["C#", ".NET", "SQLite", "Layered architecture"],
+            "link": "https://github.com/geonnn/centro-deportivo"
+          }
         ],
         "pdfName": "CV_Ignacio_Hassan_QA.pdf"
       }
