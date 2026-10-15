@@ -1,0 +1,238 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Social from "../../components/Social.astro";
+import cvData from "../../data/cvData.json";
+
+export function getStaticPaths() {
+  const languages = ["es", "en"] as const;
+  const roles = cvData.roles;
+
+  return languages.flatMap((idioma) =>
+    Object.keys(roles).map((rol) => ({
+      params: { idioma, rol },
+      props: {
+        idioma,
+        roleKey: rol as keyof typeof roles,
+      },
+    }))
+  );
+}
+
+type Language = "es" | "en";
+
+interface Props {
+  idioma: Language;
+  roleKey: keyof typeof cvData.roles;
+}
+
+const { idioma, roleKey } = Astro.props;
+const roles = cvData.roles;
+const currentRole = roles[roleKey];
+const roleContent = currentRole[idioma];
+const common = cvData.common[idioma];
+
+// Normalizar baseUrl para enlaces
+const rawBase = import.meta.env.BASE_URL || "/";
+const baseUrl = rawBase.endsWith("/") ? rawBase : `${rawBase}/`;
+
+const pageTitle = `${common.name} | ${roleContent.title}`;
+const languages: Language[] = ["es", "en"];
+---
+
+<Layout title={pageTitle} lang={idioma}>
+  <!-- <header class="top-nav">
+    <div class="top-nav-inner">
+      <nav class="role-nav-group" aria-label={common.rolesNavTitle}>
+        <span class="role-nav-label">{common.rolesNavTitle}</span>
+        {
+          Object.values(roles).map((r) => {
+            const isActive = r.slug === roleKey;
+            return (
+              <a
+                href={`${baseUrl}${idioma}/${r.slug}/`}
+                class={`role-tab ${isActive ? "active" : ""}`}
+                aria-current={isActive ? "page" : undefined}
+              >
+                {r.label[idioma]}
+              </a>
+            );
+          })
+        }
+      </nav>
+
+      <div
+        class="lang-toggle-group"
+        role="tablist"
+        aria-label={idioma === "es" ? "Selector de idioma" : "Language selector"}
+      >
+        {
+          languages.map((l) => {
+            const isActive = l === idioma;
+            return (
+              <a
+                href={`${baseUrl}${l}/${roleKey}/`}
+                class={`lang-btn ${isActive ? "active" : ""}`}
+                aria-current={isActive ? "page" : undefined}
+                data-lang={l}
+              >
+                {l.toUpperCase()}
+              </a>
+            );
+          })
+        }
+      </div>
+    </div>
+  </header> -->
+
+  <main class="document-container">
+    <article class="cv-card">
+      <!-- ENCABEZADO INSTITUCIONAL -->
+      <section class="cv-header">
+        <h1 class="header-name">{common.name}</h1>
+        <p class="header-title">{roleContent.title}</p>
+        <p class="header-bio">{roleContent.bio}</p>
+
+        <div class="header-contact-bar">
+          <span class="contact-item">
+            {common.location}
+          </span>
+          <a class="contact-item" href={`mailto:${common.email}`}>
+            ✉️ {common.email}
+          </a>
+        </div>
+
+        <div class="header-actions">
+          <Social />
+
+          <div>
+            <a
+              href={`${baseUrl}assets/CV.pdf`}
+              download={roleContent.pdfName}
+              class="btn-download-cv"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              {common.downloadCV}
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- CUERPO DEL CV -->
+      <div class="cv-body">
+        <!-- EXPERIENCIA LABORAL -->
+        <section class="cv-section cv-section--experience">
+          <h2 class="section-title">{common.workExperienceTitle}</h2>
+          <div class="timeline">
+            {common.jobs.map((job) => (
+              <div class="timeline-item">
+                <div class="item-header">
+                  <h3 class="item-title">{job.role}</h3>
+                  <span class="item-period">{job.period}</span>
+                </div>
+                <div class="item-subtitle">{job.company}</div>
+                <ul class="item-bullets">
+                  {job.bullets.map((bullet) => (
+                    <li>{bullet}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <!-- EDUCACIÓN Y CERTIFICACIONES -->
+        <aside class="cv-side">
+          <section class="cv-section">
+            <h2 class="section-title">{common.educationTitle}</h2>
+            <div class="education-grid">
+              {common.education.map((edu) => (
+                <div class="education-item">
+                  <div class="education-degree">{edu.degree}</div>
+                  <div class="education-institution">{edu.institution}</div>
+                  <span class="education-status">{edu.status}</span>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section class="cv-section">
+            <h2 class="section-title">{common.certificationsTitle}</h2>
+            <ul class="certifications-list">
+              {common.certifications.map((cert) => (
+                <li>{cert}</li>
+              ))}
+            </ul>
+          </section>
+        </aside>
+
+        <!-- PROYECTOS ACADÉMICOS -->
+        <section class="cv-section cv-section--projects">
+          <h2 class="section-title">{common.academicProjectsTitle}</h2>
+          <div class="projects-grid">
+            {roleContent.projects.map((project) => (
+              <article class="project-card">
+                <div class="project-head">
+                  <h3 class="project-name">{project.name}</h3>
+                  <span class="project-period">{project.period}</span>
+                </div>
+                <div class="project-context">{project.context}</div>
+                <div class="project-role">{project.roleInTeam}</div>
+                <p class="project-desc">{project.description}</p>
+                <div class="project-stack">
+                  {project.stack.map((tech) => (
+                    <span class="skill-tag">{tech}</span>
+                  ))}
+                </div>
+                <a
+                  class="project-link"
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {common.repoLinkLabel}
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                </a>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <!-- COMPETENCIAS Y HABILIDADES TÉCNICAS -->
+        <section class="cv-section cv-section--skills">
+          <h2 class="section-title">{common.skillsTitle}</h2>
+          <div class="skills-highlight">
+            {roleContent.keySkills.map((skill) => (
+              <span class="skill-pill skill-pill--key">{skill}</span>
+            ))}
+          </div>
+          {roleContent.secondarySkills?.length > 0 && (
+            <p class="skills-secondary">
+              {idioma === "es" ? "También:" : "Also:"} {roleContent.secondarySkills.join(", ")}
+            </p>
+          )}
+        </section>
+      </div>
+    </article>
+
+    <footer class="cv-footer">
+      <p>{common.name} &bull; La Plata, Buenos Aires, Argentina</p>
+    </footer>
+  </main>
+
+  <!-- GUARDAR PREFERENCIA DE IDIOMA AL VISITAR -->
+  <script define:vars={{ idioma }}>
+    try {
+      localStorage.setItem("preferred-lang", idioma);
+    } catch (e) {
+      // Ignorar si el almacenamiento local está restringido
+    }
+  </script>
+</Layout>
