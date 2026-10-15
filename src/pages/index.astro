@@ -1,19 +1,27 @@
 ---
 const rawBase = import.meta.env.BASE_URL || "/";
 const baseUrl = rawBase.endsWith("/") ? rawBase : `${rawBase}/`;
-const targetUrl = `${baseUrl}cv/analista-funcional/`;
+const defaultTarget = `${baseUrl}es/analista-funcional/`;
 ---
 
 <!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="refresh" content={`0;url=${targetUrl}`} />
+    <meta http-equiv="refresh" content={`0;url=${defaultTarget}`} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Redirigiendo a CV de Ignacio Ahmed Hassan...</title>
-    <link rel="icon" type="image/svg+xml" href={`${baseUrl}favicon.svg`} />
-    <script define:vars={{ targetUrl }}>
-      window.location.replace(targetUrl);
+    <link rel="icon" type="image/x-icon" href={`${baseUrl}favicon.ico`} />
+    <script define:vars={{ baseUrl, defaultTarget }}>
+      try {
+        const stored = localStorage.getItem("preferred-lang");
+        const browser = (navigator.languages?.[0] || navigator.language || "es").toLowerCase();
+        const lang = stored || (browser.startsWith("en") ? "en" : "es");
+        const target = `${baseUrl}${lang}/analista-funcional/`;
+        window.location.replace(target);
+      } catch (e) {
+        window.location.replace(defaultTarget);
+      }
     </script>
     <style>
       body {
@@ -37,7 +45,7 @@ const targetUrl = `${baseUrl}cv/analista-funcional/`;
   <body>
     <div>
       <p>Redirigiendo al perfil profesional...</p>
-      <p><a href={targetUrl}>Haz clic aquí si no eres redirigido automáticamente</a></p>
+      <p><a href={defaultTarget}>Haz clic aquí si no eres redirigido automáticamente</a></p>
     </div>
   </body>
 </html>

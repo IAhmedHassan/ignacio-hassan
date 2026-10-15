@@ -122,6 +122,10 @@ body {
   cursor: pointer;
   letter-spacing: 0.05em;
   transition: all 0.2s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .lang-btn:hover {
@@ -582,31 +586,6 @@ body {
 }
 
 /* ==========================================================================
-   PANEL Y ELEMENTOS DE IDIOMA (ES / EN)
-   ========================================================================== */
-html[data-active-lang="es"] .lang-en,
-html:not([data-active-lang="en"]) .lang-en {
-  display: none !important;
-}
-
-html[data-active-lang="en"] .lang-es {
-  display: none !important;
-}
-
-.lang-panel {
-  display: none;
-}
-
-html[data-active-lang="es"] .lang-panel[data-lang-panel="es"],
-html:not([data-active-lang="en"]) .lang-panel[data-lang-panel="es"] {
-  display: block;
-}
-
-html[data-active-lang="en"] .lang-panel[data-lang-panel="en"] {
-  display: block;
-}
-
-/* ==========================================================================
    FOOTER INSTITUCIONAL
    ========================================================================== */
 .cv-footer {
@@ -664,10 +643,8 @@ html[data-active-lang="en"] .lang-panel[data-lang-panel="en"] {
     padding: 3.25rem 3.25rem 2.75rem;
   }
 
-  /* El panel de idioma activo pasa a grilla tipo expediente */
-  html[data-active-lang="es"] .lang-panel[data-lang-panel="es"],
-  html:not([data-active-lang="en"]) .lang-panel[data-lang-panel="es"],
-  html[data-active-lang="en"] .lang-panel[data-lang-panel="en"] {
+  /* El cuerpo del CV pasa a grilla tipo expediente */
+  .cv-body {
     display: grid;
     grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
     grid-template-areas:
