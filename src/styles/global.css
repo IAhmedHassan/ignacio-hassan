@@ -155,8 +155,9 @@ body {
 }
 
 /* ==========================================================================
-   HEADER INSTITUCIONAL
+   HEADER INSTITUCIONAL / PERFIL PROFESIONAL
    ========================================================================== */
+.cv-profile,
 .cv-header {
   background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
   color: #ffffff;
@@ -165,6 +166,7 @@ body {
   position: relative;
 }
 
+.cv-profile::after,
 .cv-header::after {
   content: "";
   position: absolute;
@@ -175,6 +177,7 @@ body {
   background: linear-gradient(90deg, #1d4ed8, #60a5fa, #1d4ed8);
 }
 
+.profile-name,
 .header-name {
   font-size: 2.3rem;
   font-weight: 800;
@@ -183,6 +186,7 @@ body {
   color: #ffffff;
 }
 
+.profile-title,
 .header-title {
   font-size: 1.25rem;
   font-weight: 500;
@@ -190,6 +194,7 @@ body {
   margin: 0 0 1.25rem 0;
 }
 
+.profile-bio,
 .header-bio {
   font-size: 0.95rem;
   line-height: 1.65;
@@ -198,6 +203,8 @@ body {
   margin: 0 0 1.5rem 0;
 }
 
+.profile-details,
+.profile-contact-bar,
 .header-contact-bar {
   display: flex;
   flex-wrap: wrap;
@@ -207,8 +214,10 @@ body {
   border-top: 1px solid rgba(255, 255, 255, 0.12);
   font-size: 0.9rem;
   color: #94a3b8;
+  margin: 0;
 }
 
+.detail-item,
 .contact-item {
   display: inline-flex;
   align-items: center;
@@ -218,8 +227,14 @@ body {
   transition: color 0.2s ease;
 }
 
+.detail-item:hover,
 .contact-item:hover {
   color: #ffffff;
+}
+
+.detail-separator,
+.pill-separator {
+  display: none;
 }
 
 .header-actions {
@@ -604,14 +619,17 @@ body {
     align-items: flex-start;
   }
   
+  .cv-profile,
   .cv-header {
     padding: 2rem 1.5rem 1.5rem;
   }
   
+  .profile-name,
   .header-name {
     font-size: 1.8rem;
   }
   
+  .profile-title,
   .header-title {
     font-size: 1.05rem;
   }
@@ -639,6 +657,7 @@ body {
     margin: 2.5rem auto;
   }
 
+  .cv-profile,
   .cv-header {
     padding: 3.25rem 3.25rem 2.75rem;
   }

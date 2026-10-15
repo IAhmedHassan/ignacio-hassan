@@ -86,20 +86,21 @@ const languages: Language[] = ["es", "en"];
 
   <main class="document-container">
     <article class="cv-card">
-      <!-- ENCABEZADO INSTITUCIONAL -->
-      <section class="cv-header">
-        <h1 class="header-name">{common.name}</h1>
-        <p class="header-title">{roleContent.title}</p>
-        <p class="header-bio">{roleContent.bio}</p>
+      <!-- PERFIL PROFESIONAL / INTRODUCCIÓN -->
+      <section class="cv-profile profile-content">
+        <h1 class="profile-name">{common.name}</h1>
+        <p class="profile-title">{roleContent.title}</p>
+        <p class="profile-bio">{roleContent.bio}</p>
 
-        <div class="header-contact-bar">
-          <span class="contact-item">
+        <p class="profile-details content-details">
+          <span class="detail-item">
             {common.location}
           </span>
-          <a class="contact-item" href={`mailto:${common.email}`}>
+          <span class="detail-separator" aria-hidden="true">&bull;</span>
+          <a class="detail-item" href={`mailto:${common.email}`}>
             ✉️ {common.email}
           </a>
-        </div>
+        </p>
 
         <div class="header-actions">
           <Social />
@@ -145,7 +146,7 @@ const languages: Language[] = ["es", "en"];
         </section>
 
         <!-- EDUCACIÓN Y CERTIFICACIONES -->
-        <aside class="cv-side">
+        <div class="cv-side cv-side-content">
           <section class="cv-section">
             <h2 class="section-title">{common.educationTitle}</h2>
             <div class="education-grid">
@@ -167,7 +168,7 @@ const languages: Language[] = ["es", "en"];
               ))}
             </ul>
           </section>
-        </aside>
+        </div>
 
         <!-- PROYECTOS ACADÉMICOS -->
         <section class="cv-section cv-section--projects">
@@ -183,8 +184,13 @@ const languages: Language[] = ["es", "en"];
                 <div class="project-role">{project.roleInTeam}</div>
                 <p class="project-desc">{project.description}</p>
                 <div class="project-stack">
-                  {project.stack.map((tech) => (
-                    <span class="skill-tag">{tech}</span>
+                  {project.stack.map((tech, index) => (
+                    <>
+                      <span class="skill-tag">{tech}</span>
+                      {index < project.stack.length - 1 && (
+                        <span class="pill-separator" aria-hidden="true"> • </span>
+                      )}
+                    </>
                   ))}
                 </div>
                 <a
@@ -209,8 +215,13 @@ const languages: Language[] = ["es", "en"];
         <section class="cv-section cv-section--skills">
           <h2 class="section-title">{common.skillsTitle}</h2>
           <div class="skills-highlight">
-            {roleContent.keySkills.map((skill) => (
-              <span class="skill-pill skill-pill--key">{skill}</span>
+            {roleContent.keySkills.map((skill, index) => (
+              <>
+                <span class="skill-pill skill-pill--key">{skill}</span>
+                {index < roleContent.keySkills.length - 1 && (
+                  <span class="pill-separator" aria-hidden="true"> • </span>
+                )}
+              </>
             ))}
           </div>
           {roleContent.secondarySkills?.length > 0 && (
