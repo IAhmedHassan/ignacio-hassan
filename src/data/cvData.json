@@ -4,7 +4,12 @@
       "name": "Ignacio Ahmed Hassan",
       "location": "📍 La Plata, Buenos Aires, Argentina",
       "email": "ignacioahmedhassan@gmail.com",
+      "websiteUrl": "https://ignacioahmedhassan.live",
+      "websiteDisplay": "ignacioahmedhassan.live",
+      "contactEmailLabel": "Envíame un correo",
       "downloadCV": "Descargar CV (PDF)",
+      "downloadCVNormal": "Normal",
+      "downloadCVATS": "ATS",
       "rolesNavTitle": "Perfil profesional:",
       "workExperienceTitle": "Experiencia Laboral",
       "educationTitle": "Educación",
@@ -29,7 +34,7 @@
         {
           "role": "Data Curator",
           "company": "Veeva Systems",
-          "period": "Febrero 2025 – Presente",
+          "period": "Febrero 2025 – Agosto 2025",
           "bullets": [
             "Gestión y validación de conjuntos de datos para clientes de industrias farmacéuticas y ciencias de la vida.",
             "Aseguramiento de la integridad, consistencia y cumplimiento de estándares del sector."
@@ -65,7 +70,12 @@
       "name": "Ignacio Ahmed Hassan",
       "location": "📍 La Plata, Buenos Aires, Argentina",
       "email": "ignacioahmedhassan@gmail.com",
+      "websiteUrl": "https://ignacioahmedhassan.live",
+      "websiteDisplay": "ignacioahmedhassan.live",
+      "contactEmailLabel": "Send me an email",
       "downloadCV": "Download Resume (PDF)",
+      "downloadCVNormal": "Normal",
+      "downloadCVATS": "ATS",
       "rolesNavTitle": "Target Profile:",
       "workExperienceTitle": "Work Experience",
       "educationTitle": "Education",
@@ -90,7 +100,7 @@
         {
           "role": "Data Curator",
           "company": "Veeva Systems",
-          "period": "February 2025 – Present",
+          "period": "February 2025 – August 2025",
           "bullets": [
             "Management and validation of complex data sets for clients in pharmaceutical and life sciences industries.",
             "Ensuring data integrity, strict consistency, and regulatory compliance standards."

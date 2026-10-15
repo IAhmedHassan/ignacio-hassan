@@ -35,6 +35,9 @@ const common = cvData.common[idioma];
 const rawBase = import.meta.env.BASE_URL || "/";
 const baseUrl = rawBase.endsWith("/") ? rawBase : `${rawBase}/`;
 
+const rootSiteUrl = (common.websiteUrl || "https://ignacioahmedhassan.live").replace(/\/$/, "");
+const currentRolePageUrl = `${rootSiteUrl}/${idioma}/${currentRole.slug}/`;
+
 const pageTitle = `${common.name} | ${roleContent.title}`;
 const languages: Language[] = ["es", "en"];
 ---
@@ -86,37 +89,67 @@ const languages: Language[] = ["es", "en"];
 
   <main class="document-container">
     <article class="cv-card">
-      <!-- ENCABEZADO INSTITUCIONAL -->
-      <section class="cv-header">
-        <h1 class="header-name">{common.name}</h1>
-        <p class="header-title">{roleContent.title}</p>
-        <p class="header-bio">{roleContent.bio}</p>
+      <!-- PERFIL PROFESIONAL / INTRODUCCIÓN -->
+      <section class="cv-profile profile-content">
+        <h1 class="profile-name">{common.name}</h1>
+        <p class="profile-title">{roleContent.title}</p>
+        <p class="profile-bio">{roleContent.bio}</p>
 
-        <div class="header-contact-bar">
-          <span class="contact-item">
+        <p class="profile-details content-details">
+          <span class="detail-item">
             {common.location}
           </span>
-          <a class="contact-item" href={`mailto:${common.email}`}>
+          <span class="detail-separator" aria-hidden="true">&bull;</span>
+          <a class="detail-item" href={`mailto:${common.email}`}>
             ✉️ {common.email}
           </a>
-        </div>
+          <span class="detail-separator print-site-separator" aria-hidden="true">&bull;</span>
+          <a class="detail-item print-site-link" href={currentRolePageUrl}>
+            🌐 {common.websiteDisplay}
+          </a>
+        </p>
 
-        <div class="header-actions">
+        <div class="profile-actions">
           <Social />
 
-          <div>
-            <a
-              href={`${baseUrl}assets/CV.pdf`}
-              download={roleContent.pdfName}
-              class="btn-download-cv"
+          <div class="cv-download-dropdown">
+            <button
+              type="button"
+              class="btn-download-cv btn-download-trigger"
+              id="download-trigger"
+              aria-haspopup="true"
+              aria-expanded="false"
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                 <polyline points="7 10 12 15 17 10"></polyline>
                 <line x1="12" y1="15" x2="12" y2="3"></line>
               </svg>
-              {common.downloadCV}
-            </a>
+              <span>{common.downloadCV}</span>
+              <svg class="chevron-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+
+            <div class="download-menu" id="download-menu" role="menu">
+              <button
+                type="button"
+                class="download-option"
+                data-print-format="visual"
+                role="menuitem"
+              >
+                {common.downloadCVNormal}
+              </button>
+
+              <button
+                type="button"
+                class="download-option"
+                data-print-format="ats"
+                role="menuitem"
+              >
+                {common.downloadCVATS}
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -145,7 +178,7 @@ const languages: Language[] = ["es", "en"];
         </section>
 
         <!-- EDUCACIÓN Y CERTIFICACIONES -->
-        <aside class="cv-side">
+        <div class="cv-side cv-side-content">
           <section class="cv-section">
             <h2 class="section-title">{common.educationTitle}</h2>
             <div class="education-grid">
@@ -167,7 +200,7 @@ const languages: Language[] = ["es", "en"];
               ))}
             </ul>
           </section>
-        </aside>
+        </div>
 
         <!-- PROYECTOS ACADÉMICOS -->
         <section class="cv-section cv-section--projects">
@@ -183,8 +216,13 @@ const languages: Language[] = ["es", "en"];
                 <div class="project-role">{project.roleInTeam}</div>
                 <p class="project-desc">{project.description}</p>
                 <div class="project-stack">
-                  {project.stack.map((tech) => (
-                    <span class="skill-tag">{tech}</span>
+                  {project.stack.map((tech, index) => (
+                    <>
+                      <span class="skill-tag">{tech}</span>
+                      {index < project.stack.length - 1 && (
+                        <span class="pill-separator" aria-hidden="true"> • </span>
+                      )}
+                    </>
                   ))}
                 </div>
                 <a
@@ -209,8 +247,13 @@ const languages: Language[] = ["es", "en"];
         <section class="cv-section cv-section--skills">
           <h2 class="section-title">{common.skillsTitle}</h2>
           <div class="skills-highlight">
-            {roleContent.keySkills.map((skill) => (
-              <span class="skill-pill skill-pill--key">{skill}</span>
+            {roleContent.keySkills.map((skill, index) => (
+              <>
+                <span class="skill-pill skill-pill--key">{skill}</span>
+                {index < roleContent.keySkills.length - 1 && (
+                  <span class="pill-separator" aria-hidden="true"> • </span>
+                )}
+              </>
             ))}
           </div>
           {roleContent.secondarySkills?.length > 0 && (
@@ -223,16 +266,87 @@ const languages: Language[] = ["es", "en"];
     </article>
 
     <footer class="cv-footer">
-      <p>{common.name} &bull; La Plata, Buenos Aires, Argentina</p>
+      <p>
+        {common.name} &bull; La Plata, Buenos Aires, Argentina &bull;{" "}
+        <a class="footer-email-link" href={`mailto:${common.email}`}>
+          {common.contactEmailLabel}
+        </a>
+      </p>
     </footer>
   </main>
 
-  <!-- GUARDAR PREFERENCIA DE IDIOMA AL VISITAR -->
-  <script define:vars={{ idioma }}>
+  <!-- SCRIPTS DE INTERACCIÓN (IDIOMA Y DESCARGA / IMPRESIÓN CV) -->
+  <script define:vars={{ idioma, pdfName: roleContent.pdfName }}>
+    // Guardar preferencia de idioma al visitar
     try {
       localStorage.setItem("preferred-lang", idioma);
     } catch (e) {
       // Ignorar si el almacenamiento local está restringido
+    }
+
+    // Manejo del menú desplegable de descarga e impresión (Visual vs ATS)
+    const trigger = document.getElementById("download-trigger");
+    const menu = document.getElementById("download-menu");
+    const options = document.querySelectorAll("[data-print-format]");
+
+    function toggleMenu(show) {
+      if (!menu || !trigger) return;
+      const willShow = show !== undefined ? show : !menu.classList.contains("is-open");
+      menu.classList.toggle("is-open", willShow);
+      trigger.setAttribute("aria-expanded", String(willShow));
+    }
+
+    if (trigger && menu) {
+      trigger.addEventListener("click", (e) => {
+        e.stopPropagation();
+        toggleMenu();
+      });
+
+      document.addEventListener("click", (e) => {
+        if (!trigger.contains(e.target) && !menu.contains(e.target)) {
+          toggleMenu(false);
+        }
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          toggleMenu(false);
+        }
+      });
+
+      options.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const format = btn.getAttribute("data-print-format");
+          toggleMenu(false);
+          descargarCV(format);
+        });
+      });
+    }
+
+    function descargarCV(format) {
+      const originalTitle = document.title;
+      
+      if (format === "ats") {
+        document.body.classList.add("ats-format");
+        const cleanName = pdfName ? pdfName.replace(/\.pdf$/i, "") + "_ATS" : "CV_Ignacio_Hassan_ATS";
+        document.title = cleanName;
+      } else {
+        document.body.classList.remove("ats-format");
+        const cleanName = pdfName ? pdfName.replace(/\.pdf$/i, "") : "CV_Ignacio_Hassan";
+        document.title = cleanName;
+      }
+
+      // Abre el diálogo de impresión / Guardar como PDF
+      window.print();
+
+      // Restaurar estado al cerrar el diálogo
+      const cleanup = () => {
+        document.body.classList.remove("ats-format");
+        document.title = originalTitle;
+      };
+
+      window.addEventListener("afterprint", cleanup, { once: true });
+      setTimeout(cleanup, 1500);
     }
   </script>
 </Layout>

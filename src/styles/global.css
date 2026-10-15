@@ -155,8 +155,9 @@ body {
 }
 
 /* ==========================================================================
-   HEADER INSTITUCIONAL
+   HEADER INSTITUCIONAL / PERFIL PROFESIONAL
    ========================================================================== */
+.cv-profile,
 .cv-header {
   background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
   color: #ffffff;
@@ -165,6 +166,7 @@ body {
   position: relative;
 }
 
+.cv-profile::after,
 .cv-header::after {
   content: "";
   position: absolute;
@@ -175,6 +177,7 @@ body {
   background: linear-gradient(90deg, #1d4ed8, #60a5fa, #1d4ed8);
 }
 
+.profile-name,
 .header-name {
   font-size: 2.3rem;
   font-weight: 800;
@@ -183,6 +186,7 @@ body {
   color: #ffffff;
 }
 
+.profile-title,
 .header-title {
   font-size: 1.25rem;
   font-weight: 500;
@@ -190,6 +194,7 @@ body {
   margin: 0 0 1.25rem 0;
 }
 
+.profile-bio,
 .header-bio {
   font-size: 0.95rem;
   line-height: 1.65;
@@ -198,6 +203,8 @@ body {
   margin: 0 0 1.5rem 0;
 }
 
+.profile-details,
+.profile-contact-bar,
 .header-contact-bar {
   display: flex;
   flex-wrap: wrap;
@@ -207,8 +214,10 @@ body {
   border-top: 1px solid rgba(255, 255, 255, 0.12);
   font-size: 0.9rem;
   color: #94a3b8;
+  margin: 0;
 }
 
+.detail-item,
 .contact-item {
   display: inline-flex;
   align-items: center;
@@ -218,10 +227,19 @@ body {
   transition: color 0.2s ease;
 }
 
+.detail-item:hover,
 .contact-item:hover {
   color: #ffffff;
 }
 
+.detail-separator,
+.pill-separator,
+.print-site-link,
+.print-site-separator {
+  display: none;
+}
+
+.profile-actions,
 .header-actions {
   display: flex;
   flex-wrap: wrap;
@@ -251,6 +269,73 @@ body {
   background-color: #f1f5f9;
   transform: translateY(-1px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ==========================================================================
+   DROPDOWN DE DESCARGA DE CV (NORMAL vs ATS)
+   ========================================================================== */
+.cv-download-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.btn-download-trigger {
+  cursor: pointer;
+  font-family: inherit;
+  border: none;
+  user-select: none;
+}
+
+.chevron-icon {
+  margin-left: 0.2rem;
+  transition: transform 0.2s ease;
+}
+
+.cv-download-dropdown .btn-download-trigger[aria-expanded="true"] .chevron-icon {
+  transform: rotate(180deg);
+}
+
+.download-menu {
+  position: absolute;
+  top: calc(100% + 0.4rem);
+  right: 0;
+  min-width: 100%;
+  background-color: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  box-shadow: 0 8px 20px -4px rgba(15, 23, 42, 0.2), 0 4px 8px -4px rgba(15, 23, 42, 0.1);
+  padding: 0.3rem;
+  z-index: 1000;
+  display: none;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.download-menu.is-open {
+  display: flex;
+}
+
+.download-option {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.85rem;
+  background: transparent;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.download-option:hover,
+.download-option:focus {
+  background-color: #f1f5f9;
+  color: var(--color-primary-light);
+  outline: none;
 }
 
 /* ==========================================================================
@@ -595,6 +680,18 @@ body {
   color: var(--color-text-muted);
 }
 
+.footer-email-link {
+  color: var(--color-primary-light);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.footer-email-link:hover {
+  color: var(--color-accent);
+}
+
 /* ==========================================================================
    RESPONSIVE DESIGN
    ========================================================================== */
@@ -604,14 +701,17 @@ body {
     align-items: flex-start;
   }
   
+  .cv-profile,
   .cv-header {
     padding: 2rem 1.5rem 1.5rem;
   }
   
+  .profile-name,
   .header-name {
     font-size: 1.8rem;
   }
   
+  .profile-title,
   .header-title {
     font-size: 1.05rem;
   }
@@ -639,6 +739,7 @@ body {
     margin: 2.5rem auto;
   }
 
+  .cv-profile,
   .cv-header {
     padding: 3.25rem 3.25rem 2.75rem;
   }
@@ -681,5 +782,542 @@ body {
 
   .projects-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ==========================================================================
+   ESTILOS DE IMPRESIÓN (@media print)
+   Optimizado para impresión y exportación a PDF (A4 / Carta)
+   ========================================================================== */
+@media print {
+  @page {
+    margin: 1.2cm 1.2cm 1.2cm 1.2cm;
+    size: A4 portrait;
+  }
+
+  *, *::before, *::after {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #1e293b !important;
+    font-size: 9.5pt !important;
+    line-height: 1.45 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Ocultar elementos interactivos / web que no tienen sentido en papel */
+  .top-nav,
+  .profile-actions,
+  .header-actions,
+  .btn-download-cv,
+  .project-link svg,
+  .cv-footer {
+    display: none !important;
+  }
+
+  .document-container {
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .cv-card {
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+  }
+
+  /* Perfil / Cabecera: fondo limpio blanco para no gastar tinta */
+  .cv-profile,
+  .cv-header {
+    background: transparent !important;
+    color: #0f172a !important;
+    padding: 0 0 1rem 0 !important;
+    border-bottom: 2px solid #0f172a !important;
+  }
+
+  .cv-profile::after,
+  .cv-header::after {
+    display: none !important;
+  }
+
+  .profile-name,
+  .header-name {
+    color: #0f172a !important;
+    font-size: 1.8rem !important;
+    margin: 0 0 0.2rem 0 !important;
+  }
+
+  .profile-title,
+  .header-title {
+    color: #1e3a8a !important;
+    font-size: 1.1rem !important;
+    font-weight: 700 !important;
+    margin: 0 0 0.6rem 0 !important;
+  }
+
+  .profile-bio,
+  .header-bio {
+    color: #334155 !important;
+    font-size: 9.5pt !important;
+    line-height: 1.5 !important;
+    max-width: 100% !important;
+    margin: 0 0 0.8rem 0 !important;
+  }
+
+  .profile-details,
+  .profile-contact-bar,
+  .header-contact-bar {
+    border-top: 1px solid #cbd5e1 !important;
+    padding-top: 0.6rem !important;
+    gap: 1.2rem !important;
+    font-size: 9pt !important;
+    color: #475569 !important;
+    margin: 0 !important;
+  }
+
+  .detail-item,
+  .contact-item {
+    color: #334155 !important;
+  }
+
+  .detail-separator,
+  .pill-separator {
+    display: none !important;
+  }
+
+  .print-site-link {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.3rem !important;
+    color: #1e3a8a !important;
+    text-decoration: none !important;
+  }
+
+  .print-site-separator {
+    display: inline !important;
+    color: #cbd5e1 !important;
+  }
+
+  /* Cuerpo del CV: flujo vertical controlado para paginación limpia */
+  .cv-body {
+    padding: 1.2rem 0 0 0 !important;
+    display: block !important;
+  }
+
+  .cv-section {
+    margin-bottom: 1.3rem !important;
+    page-break-inside: auto;
+    break-inside: auto;
+  }
+
+  .cv-section--experience {
+    padding-right: 0 !important;
+  }
+
+  .cv-side {
+    border-left: none !important;
+    padding-left: 0 !important;
+    margin-bottom: 1.3rem !important;
+  }
+
+  .section-title {
+    font-size: 10.5pt !important;
+    margin: 0 0 0.8rem 0 !important;
+    padding-bottom: 0.3rem !important;
+    border-bottom: 1.5px solid #0f172a !important;
+    color: #0f172a !important;
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+  }
+
+  .section-title::before {
+    background-color: #0f172a !important;
+  }
+
+  .timeline {
+    gap: 1rem !important;
+  }
+
+  .timeline-item {
+    padding-left: 1rem !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .item-header {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+  }
+
+  .item-title {
+    font-size: 10pt !important;
+    color: #0f172a !important;
+  }
+
+  .item-period {
+    font-size: 8.5pt !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    color: #64748b !important;
+  }
+
+  .item-subtitle {
+    font-size: 9pt !important;
+    color: #1e3a8a !important;
+    margin-bottom: 0.3rem !important;
+  }
+
+  .item-bullets {
+    font-size: 9pt !important;
+    line-height: 1.45 !important;
+    padding-left: 1rem !important;
+  }
+
+  .item-bullets li {
+    margin-bottom: 0.25rem !important;
+  }
+
+  .education-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.6rem !important;
+  }
+
+  .education-item {
+    padding: 0.6rem 0.8rem !important;
+    background: #f8fafc !important;
+    border: 1px solid #e2e8f0 !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .education-degree {
+    font-size: 9.5pt !important;
+    color: #0f172a !important;
+  }
+
+  .education-institution {
+    font-size: 8.5pt !important;
+    color: #475569 !important;
+  }
+
+  .education-status {
+    font-size: 8pt !important;
+    padding: 0.1rem 0.4rem !important;
+  }
+
+  .certifications-list {
+    font-size: 9pt !important;
+    padding-left: 1rem !important;
+  }
+
+  .certifications-list li {
+    margin-bottom: 0.25rem !important;
+  }
+
+  .projects-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.8rem !important;
+  }
+
+  .project-card {
+    padding: 0.8rem 1rem !important;
+    background: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    border-left: 3px solid #1e3a8a !important;
+    box-shadow: none !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .project-name {
+    font-size: 9.5pt !important;
+  }
+
+  .project-context {
+    font-size: 8.5pt !important;
+  }
+
+  .project-desc {
+    font-size: 8.5pt !important;
+    line-height: 1.4 !important;
+    margin: 0.4rem 0 !important;
+  }
+
+  .project-stack {
+    gap: 0.35rem !important;
+  }
+
+  .project-stack .skill-tag {
+    font-size: 7.5pt !important;
+    padding: 0.15rem 0.45rem !important;
+    background: #f1f5f9 !important;
+  }
+
+  .project-link {
+    font-size: 8pt !important;
+    margin-top: 0.4rem !important;
+    color: #1e3a8a !important;
+    text-decoration: none !important;
+  }
+
+  .skills-highlight {
+    gap: 0.4rem !important;
+  }
+
+  .skill-pill {
+    padding: 0.2rem 0.6rem !important;
+    font-size: 8pt !important;
+    border: 1px solid #cbd5e1 !important;
+    background: #f8fafc !important;
+    color: #1e293b !important;
+  }
+
+  .skills-secondary {
+    font-size: 8.5pt !important;
+    margin-top: 0.6rem !important;
+    color: #475569 !important;
+  }
+
+  /* ==========================================================================
+     FORMATO ATS ESPECÍFICO (@media print con body.ats-format)
+     Diseñado específicamente para filtros automatizados de reclutamiento (ATS)
+     ========================================================================== */
+  body.ats-format {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 10pt !important;
+    line-height: 1.4 !important;
+    color: #000000 !important;
+  }
+
+  body.ats-format .cv-card,
+  body.ats-format .project-card,
+  body.ats-format .education-item,
+  body.ats-format .timeline-item {
+    border: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+  }
+
+  body.ats-format .cv-profile {
+    border-bottom: 1.5pt solid #000000 !important;
+    padding-bottom: 0.6rem !important;
+    margin-bottom: 0.8rem !important;
+  }
+
+  body.ats-format .profile-name {
+    font-size: 18pt !important;
+    font-weight: bold !important;
+    color: #000000 !important;
+    margin-bottom: 0.15rem !important;
+  }
+
+  body.ats-format .profile-title {
+    font-size: 12pt !important;
+    font-weight: bold !important;
+    color: #222222 !important;
+    margin-bottom: 0.4rem !important;
+  }
+
+  body.ats-format .profile-bio {
+    font-size: 9.5pt !important;
+    line-height: 1.45 !important;
+    color: #000000 !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  body.ats-format .profile-details {
+    border-top: none !important;
+    padding-top: 0 !important;
+    gap: 0.8rem !important;
+    font-size: 9pt !important;
+    color: #000000 !important;
+  }
+
+  body.ats-format .detail-separator {
+    display: inline !important;
+    color: #444444 !important;
+  }
+
+  body.ats-format .detail-item {
+    color: #000000 !important;
+  }
+
+  body.ats-format .print-site-link {
+    display: inline !important;
+    color: #000000 !important;
+    text-decoration: none !important;
+  }
+
+  body.ats-format .print-site-separator {
+    display: inline !important;
+    color: #444444 !important;
+  }
+
+  body.ats-format .section-title {
+    font-size: 11.5pt !important;
+    font-weight: bold !important;
+    color: #000000 !important;
+    text-transform: uppercase !important;
+    border-bottom: 1pt solid #000000 !important;
+    padding-bottom: 0.2rem !important;
+    margin-top: 1rem !important;
+    margin-bottom: 0.6rem !important;
+  }
+
+  body.ats-format .section-title::before {
+    display: none !important;
+  }
+
+  body.ats-format .timeline {
+    gap: 0.8rem !important;
+  }
+
+  body.ats-format .timeline-item {
+    border-left: none !important;
+    padding-left: 0 !important;
+  }
+
+  body.ats-format .timeline-item::before {
+    display: none !important;
+  }
+
+  body.ats-format .item-title {
+    font-size: 10.5pt !important;
+    font-weight: bold !important;
+    color: #000000 !important;
+  }
+
+  body.ats-format .item-period {
+    color: #333333 !important;
+    font-size: 9pt !important;
+    font-weight: normal !important;
+  }
+
+  body.ats-format .item-subtitle {
+    font-size: 9.5pt !important;
+    font-weight: bold !important;
+    color: #222222 !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  body.ats-format .item-bullets {
+    padding-left: 1.2rem !important;
+    font-size: 9.5pt !important;
+    color: #000000 !important;
+  }
+
+  body.ats-format .item-bullets li {
+    margin-bottom: 0.2rem !important;
+  }
+
+  body.ats-format .education-grid {
+    gap: 0.5rem !important;
+  }
+
+  body.ats-format .education-item {
+    border: none !important;
+    padding: 0 !important;
+    background: transparent !important;
+  }
+
+  body.ats-format .education-degree {
+    font-size: 10pt !important;
+    font-weight: bold !important;
+    color: #000000 !important;
+  }
+
+  body.ats-format .education-institution {
+    font-size: 9pt !important;
+    color: #333333 !important;
+  }
+
+  body.ats-format .education-status {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    color: #444444 !important;
+    font-size: 8.5pt !important;
+  }
+
+  body.ats-format .projects-grid {
+    display: block !important;
+  }
+
+  body.ats-format .project-card {
+    margin-bottom: 0.8rem !important;
+    border: none !important;
+    padding: 0 !important;
+    border-left: none !important;
+  }
+
+  body.ats-format .project-name {
+    font-size: 10.5pt !important;
+    font-weight: bold !important;
+    color: #000000 !important;
+  }
+
+  body.ats-format .project-context,
+  body.ats-format .project-role {
+    display: inline !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    color: #333333 !important;
+    font-size: 9pt !important;
+  }
+
+  body.ats-format .project-role::before {
+    content: " — " !important;
+  }
+
+  body.ats-format .project-desc {
+    font-size: 9.5pt !important;
+    margin: 0.25rem 0 !important;
+    color: #000000 !important;
+  }
+
+  body.ats-format .project-stack {
+    display: block !important;
+    margin-top: 0.2rem !important;
+  }
+
+  body.ats-format .skill-tag,
+  body.ats-format .skill-pill {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    color: #000000 !important;
+    font-size: 9pt !important;
+    font-weight: normal !important;
+    border-radius: 0 !important;
+    display: inline !important;
+  }
+
+  body.ats-format .skill-pill--key {
+    font-weight: 600 !important;
+  }
+
+  body.ats-format .skills-highlight {
+    display: block !important;
+  }
+
+  body.ats-format .pill-separator {
+    display: inline !important;
+    color: #444444 !important;
+  }
+
+  body.ats-format .skills-secondary {
+    color: #000000 !important;
+    font-size: 9pt !important;
   }
 }
