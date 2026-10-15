@@ -35,6 +35,9 @@ const common = cvData.common[idioma];
 const rawBase = import.meta.env.BASE_URL || "/";
 const baseUrl = rawBase.endsWith("/") ? rawBase : `${rawBase}/`;
 
+const rootSiteUrl = (common.websiteUrl || "https://ignacioahmedhassan.live").replace(/\/$/, "");
+const currentRolePageUrl = `${rootSiteUrl}/${idioma}/${currentRole.slug}/`;
+
 const pageTitle = `${common.name} | ${roleContent.title}`;
 const languages: Language[] = ["es", "en"];
 ---
@@ -99,6 +102,10 @@ const languages: Language[] = ["es", "en"];
           <span class="detail-separator" aria-hidden="true">&bull;</span>
           <a class="detail-item" href={`mailto:${common.email}`}>
             ✉️ {common.email}
+          </a>
+          <span class="detail-separator print-site-separator" aria-hidden="true">&bull;</span>
+          <a class="detail-item print-site-link" href={currentRolePageUrl}>
+            🌐 {common.websiteDisplay}
           </a>
         </p>
 
@@ -259,7 +266,12 @@ const languages: Language[] = ["es", "en"];
     </article>
 
     <footer class="cv-footer">
-      <p>{common.name} &bull; La Plata, Buenos Aires, Argentina</p>
+      <p>
+        {common.name} &bull; La Plata, Buenos Aires, Argentina &bull;{" "}
+        <a class="footer-email-link" href={`mailto:${common.email}`}>
+          {common.contactEmailLabel}
+        </a>
+      </p>
     </footer>
   </main>
 

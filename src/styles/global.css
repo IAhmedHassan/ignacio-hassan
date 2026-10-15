@@ -233,7 +233,9 @@ body {
 }
 
 .detail-separator,
-.pill-separator {
+.pill-separator,
+.print-site-link,
+.print-site-separator {
   display: none;
 }
 
@@ -678,6 +680,18 @@ body {
   color: var(--color-text-muted);
 }
 
+.footer-email-link {
+  color: var(--color-primary-light);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.footer-email-link:hover {
+  color: var(--color-accent);
+}
+
 /* ==========================================================================
    RESPONSIVE DESIGN
    ========================================================================== */
@@ -875,6 +889,19 @@ body {
   .detail-separator,
   .pill-separator {
     display: none !important;
+  }
+
+  .print-site-link {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.3rem !important;
+    color: #1e3a8a !important;
+    text-decoration: none !important;
+  }
+
+  .print-site-separator {
+    display: inline !important;
+    color: #cbd5e1 !important;
   }
 
   /* Cuerpo del CV: flujo vertical controlado para paginación limpia */
@@ -1123,6 +1150,17 @@ body {
 
   body.ats-format .detail-item {
     color: #000000 !important;
+  }
+
+  body.ats-format .print-site-link {
+    display: inline !important;
+    color: #000000 !important;
+    text-decoration: none !important;
+  }
+
+  body.ats-format .print-site-separator {
+    display: inline !important;
+    color: #444444 !important;
   }
 
   body.ats-format .section-title {
