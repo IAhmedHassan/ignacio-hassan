@@ -141,12 +141,12 @@
           "Diseño funcional y modernización de sistemas legacy",
           "Prototipado y automatización de procesos",
           ".NET / C# (ASP.NET Core)",
+          "Diseño y ejecución de pruebas funcionales (QA / UAT)",
+          "Pruebas unitarias (.NET · xUnit + FluentAssertions)",
           "SQL y modelado de datos"
         ],
         "secondarySkills": [
-          "Diseño y ejecución de pruebas funcionales (QA / UAT)",
           "Gestión del ciclo de vida de defectos y tickets de producción",
-          "Pruebas unitarias (.NET · xUnit + FluentAssertions)",
           "React 19 + TypeScript (Vite)",
           "HTML, CSS y JavaScript",
           "Git y control de versiones",
@@ -166,7 +166,7 @@
             "context": "Ingeniería de Software II (IS2) · UNLP · Equipo Código Quokka",
             "period": "2026",
             "roleInTeam": "Analista Funcional · QA · Backend",
-            "description": "Digitalización integral de la administración de un centro kinesiológico. Participé en el relevamiento de requisitos y en la definición de las reglas de negocio (roles y permisos, control de cupos, listas de espera priorizadas y descuentos por cancelaciones), en la redacción de la documentación funcional (SRS y PGP) y en el diseño de los criterios de aceptación. Colaboré además en el backend con .NET 10 y en la validación funcional del sistema.",
+            "description": "Digitalización integral de la administración de un centro kinesiológico. Participé en el relevamiento de requisitos y en la definición de las reglas de negocio (roles y permisos, control de cupos, listas de espera priorizadas y descuentos por cancelaciones), en la redacción de la documentación funcional (SRS y PGP) y en el diseño de los criterios de aceptación. Colaboré además en el backend con .NET 10 y en la confección de pruebas unitarias del sistema.",
             "stack": [
               ".NET 10",
               "ASP.NET Core",
